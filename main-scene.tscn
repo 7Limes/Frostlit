@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnivq5x3pn6cr"]
+
+[ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_q2uwy"]
+[ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="2_q2uwy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qetym"]
+
+[sub_resource type="Sky" id="Sky_q2uwy"]
+sky_material = SubResource("ProceduralSkyMaterial_qetym")
+
+[sub_resource type="Environment" id="Environment_5e1uj"]
+sky = SubResource("Sky_q2uwy")
+ambient_light_source = 3
+fog_enabled = true
+fog_density = 0.1283
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qetym"]
+size = Vector2(100, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q2uwy"]
+size = Vector3(100, 1, 100)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6649306, 0.74690515, 0, -0.74690515, 0.6649306, 0, 3.497411, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5e1uj")
+
+[node name="Ocean" type="StaticBody3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Ocean"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034121037, -0.13232398, -0.7484914)
+material_override = ExtResource("1_q2uwy")
+mesh = SubResource("PlaneMesh_qetym")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ocean"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.62923765, 0)
+shape = SubResource("BoxShape3D_q2uwy")
+
+[node name="Island" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9477243, 0)
+use_collision = true
+radius = 7.9799323
+radial_segments = 24
+rings = 8
+
+[node name="Player" parent="." instance=ExtResource("2_q2uwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8847854, 0)
