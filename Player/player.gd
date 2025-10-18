@@ -16,10 +16,11 @@ extends CharacterBody3D
 const DEFAULT_GROUND_TYPE = "stone"
 
 @onready var STEP_SOUND_LOOKUP = {
-	"stone": $Footsteps/StoneFootstepSounds,
-	"snow": $Footsteps/SnowFootstepSounds,
-	"wood": $Footsteps/WoodFootstepSounds
+	"stone": $SFX/StoneFootstepSounds,
+	"snow": $SFX/SnowFootstepSounds,
+	"wood": $SFX/WoodFootstepSounds
 }
+
 
 var mouse_motion: Vector2 = Vector2.ZERO
 var frozen: bool = false
@@ -28,6 +29,7 @@ var footstep_timer: float = 0.0
 var current_ground_type: String = DEFAULT_GROUND_TYPE
 
 var interact_function = null  # Callable or null
+var can_interact: bool = true
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -121,7 +123,7 @@ func footstep_tick():
 
 
 func interact_tick():
-	if interact_function != null and Input.is_action_just_pressed('interact'):
+	if can_interact and interact_function != null and Input.is_action_just_pressed('interact'):
 		interact_function.call()
 
 
@@ -144,6 +146,10 @@ func update_interact_function(interact_func):
 
 func toggle_frozen(toggle_on: bool):
 	frozen = toggle_on
+
+
+func toggle_can_interact(toggle_on: bool):
+	can_interact = toggle_on
 
 
 func _process(delta: float) -> void:
