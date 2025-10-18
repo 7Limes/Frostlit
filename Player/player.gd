@@ -6,10 +6,15 @@ extends CharacterBody3D
 @export var friction: float = 15.0
 @export var gravity: float = 8.0
 
+@export var footstep_interval: float = 0.75  ## The time in seconds between footsteps.
+
 @onready var camera = $Camera
 @onready var compass = $Camera/Compass
+@onready var snow_footstep_sounds = $SnowFootstepSounds
 
 var mouse_motion: Vector2 = Vector2.ZERO
+
+var footstep_timer: float = 0.0
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -63,11 +68,12 @@ func move_tick(delta: float):
 	if input_pressed:
 		velocity.x += accel_vector.x * acceleration * delta
 		velocity.z += accel_vector.y * acceleration * delta
+		footstep_timer = move_toward(footstep_timer, footstep_interval, delta)
 	else:
-		var horizontal_velocity = Vector2(velocity.x, velocity.z)
-		horizontal_velocity = horizontal_velocity.move_toward(Vector2.ZERO, friction * delta)
-		velocity.x = horizontal_velocity.x
-		velocity.z = horizontal_velocity.y
+		var friction_velocity = Vector2(velocity.x, velocity.z)
+		friction_velocity = friction_velocity.move_toward(Vector2.ZERO, friction * delta)
+		velocity.x = friction_velocity.x
+		velocity.z = friction_velocity.y
 	
 	var horizontal_velocity = Vector2(velocity.x, velocity.z)
 	if horizontal_velocity.length() > max_speed:
@@ -82,8 +88,15 @@ func update_compass():
 	compass.update_needle(-rotation.y)
 
 
+func footstep_tick():
+	if footstep_timer == footstep_interval:
+		snow_footstep_sounds.play()
+		footstep_timer = 0.0
+
+
 func _process(delta: float) -> void:
 	look_tick()
 	move_tick(delta)
 	move_and_slide()
 	update_compass()
+	footstep_tick()
