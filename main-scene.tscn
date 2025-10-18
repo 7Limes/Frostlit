@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=27 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_q2uwy"]
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="2_q2uwy"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://bsnwukbh1y8dl" path="res://Assets/Audio/Door/door-open.mp3" id="8_i1fv3"]
 [ext_resource type="Script" uid="uid://bjhuygaqnea2o" path="res://Scripts/General/fade_rect.gd" id="8_t871u"]
 [ext_resource type="AudioStream" uid="uid://bck3t1o7ld4wu" path="res://Assets/Audio/Door/door_close.mp3" id="9_pc8c5"]
+[ext_resource type="Material" uid="uid://bpbfc3s84ffkw" path="res://Assets/Materials/Glass/glass.tres" id="10_14fha"]
 [ext_resource type="Script" uid="uid://bi3xulqxmf40o" path="res://Scripts/General/pause_menu.gd" id="12_14fha"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qetym"]
@@ -20,7 +21,6 @@ sky_material = SubResource("ProceduralSkyMaterial_qetym")
 [sub_resource type="Environment" id="Environment_5e1uj"]
 sky = SubResource("Sky_q2uwy")
 ambient_light_source = 3
-fog_enabled = true
 fog_light_color = Color(0.2106368, 0.23213801, 0.26559368, 1)
 fog_density = 0.1283
 
@@ -36,7 +36,7 @@ size = Vector3(1000, 1, 1000)
 radius = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e304g"]
-size = Vector3(1.8314056, 2.9669495, 2.702011)
+size = Vector3(1.8314056, 3.6185398, 1.2681713)
 
 [sub_resource type="BoxMesh" id="BoxMesh_i1fv3"]
 
@@ -52,12 +52,23 @@ bottom_radius = 0.75
 height = 3.0847168
 radius = 1.5
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_libv1"]
+flip_faces = true
+top_radius = 6.0
+bottom_radius = 6.0
+height = 8.03
+radial_segments = 32
+rings = 1
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_p0wft"]
+data = PackedVector3Array(2.2961, 4.015, 5.5432997, 0, 4.015, 6, 0, 0, 6, 2.2961, 0, 5.5432997, 2.2961, 4.015, 5.5432997, 0, 0, 6, 4.2426, 4.015, 4.2426, 2.2961, 4.015, 5.5432997, 2.2961, 0, 5.5432997, 4.2426, 0, 4.2426, 4.2426, 4.015, 4.2426, 2.2961, 0, 5.5432997, 5.5432997, 4.015, 2.2961, 4.2426, 4.015, 4.2426, 4.2426, 0, 4.2426, 5.5432997, 0, 2.2961, 5.5432997, 4.015, 2.2961, 4.2426, 0, 4.2426, 6, 4.015, 0, 5.5432997, 4.015, 2.2961, 5.5432997, 0, 2.2961, 6, 0, 0, 6, 4.015, 0, 5.5432997, 0, 2.2961, 5.5432997, 4.015, -2.2961, 6, 4.015, 0, 6, 0, 0, 5.5432997, 0, -2.2961, 5.5432997, 4.015, -2.2961, 6, 0, 0, 4.2426, 4.015, -4.2426, 5.5432997, 4.015, -2.2961, 5.5432997, 0, -2.2961, 4.2426, 0, -4.2426, 4.2426, 4.015, -4.2426, 5.5432997, 0, -2.2961, 2.2961, 4.015, -5.5432997, 4.2426, 4.015, -4.2426, 4.2426, 0, -4.2426, 2.2961, 0, -5.5432997, 2.2961, 4.015, -5.5432997, 4.2426, 0, -4.2426, 0, 4.015, -6, 2.2961, 4.015, -5.5432997, 2.2961, 0, -5.5432997, 0, 0, -6, 0, 4.015, -6, 2.2961, 0, -5.5432997, -2.2961, 4.015, -5.5432997, 0, 4.015, -6, 0, 0, -6, -2.2961, 0, -5.5432997, -2.2961, 4.015, -5.5432997, 0, 0, -6, -4.2426, 4.015, -4.2426, -2.2961, 4.015, -5.5432997, -2.2961, 0, -5.5432997, -4.2426, 0, -4.2426, -4.2426, 4.015, -4.2426, -2.2961, 0, -5.5432997, -5.5432997, 4.015, -2.2961, -4.2426, 4.015, -4.2426, -4.2426, 0, -4.2426, -5.5432997, 0, -2.2961, -5.5432997, 4.015, -2.2961, -4.2426, 0, -4.2426, -6, 4.015, 0, -5.5432997, 4.015, -2.2961, -5.5432997, 0, -2.2961, -6, 0, 0, -6, 4.015, 0, -5.5432997, 0, -2.2961, -5.5432997, 4.015, 2.2961, -6, 4.015, 0, -6, 0, 0, -5.5432997, 0, 2.2961, -5.5432997, 4.015, 2.2961, -6, 0, 0, -4.2426, 4.015, 4.2426, -5.5432997, 4.015, 2.2961, -5.5432997, 0, 2.2961, -4.2426, 0, 4.2426, -4.2426, 4.015, 4.2426, -5.5432997, 0, 2.2961, -2.2961, 4.015, 5.5432997, -4.2426, 4.015, 4.2426, -4.2426, 0, 4.2426, -2.2961, 0, 5.5432997, -2.2961, 4.015, 5.5432997, -4.2426, 0, 4.2426, 0, 4.015, 6, -2.2961, 4.015, 5.5432997, -2.2961, 0, 5.5432997, 0, 0, 6, 0, 4.015, 6, -2.2961, 0, 5.5432997, 2.2961, 0, 5.5432997, 0, 0, 6, 0, -4.015, 6, 2.2961, -4.015, 5.5432997, 2.2961, 0, 5.5432997, 0, -4.015, 6, 4.2426, 0, 4.2426, 2.2961, 0, 5.5432997, 2.2961, -4.015, 5.5432997, 4.2426, -4.015, 4.2426, 4.2426, 0, 4.2426, 2.2961, -4.015, 5.5432997, 5.5432997, 0, 2.2961, 4.2426, 0, 4.2426, 4.2426, -4.015, 4.2426, 5.5432997, -4.015, 2.2961, 5.5432997, 0, 2.2961, 4.2426, -4.015, 4.2426, 6, 0, 0, 5.5432997, 0, 2.2961, 5.5432997, -4.015, 2.2961, 6, -4.015, 0, 6, 0, 0, 5.5432997, -4.015, 2.2961, 5.5432997, 0, -2.2961, 6, 0, 0, 6, -4.015, 0, 5.5432997, -4.015, -2.2961, 5.5432997, 0, -2.2961, 6, -4.015, 0, 4.2426, 0, -4.2426, 5.5432997, 0, -2.2961, 5.5432997, -4.015, -2.2961, 4.2426, -4.015, -4.2426, 4.2426, 0, -4.2426, 5.5432997, -4.015, -2.2961, 2.2961, 0, -5.5432997, 4.2426, 0, -4.2426, 4.2426, -4.015, -4.2426, 2.2961, -4.015, -5.5432997, 2.2961, 0, -5.5432997, 4.2426, -4.015, -4.2426, 0, 0, -6, 2.2961, 0, -5.5432997, 2.2961, -4.015, -5.5432997, 0, -4.015, -6, 0, 0, -6, 2.2961, -4.015, -5.5432997, -2.2961, 0, -5.5432997, 0, 0, -6, 0, -4.015, -6, -2.2961, -4.015, -5.5432997, -2.2961, 0, -5.5432997, 0, -4.015, -6, -4.2426, 0, -4.2426, -2.2961, 0, -5.5432997, -2.2961, -4.015, -5.5432997, -4.2426, -4.015, -4.2426, -4.2426, 0, -4.2426, -2.2961, -4.015, -5.5432997, -5.5432997, 0, -2.2961, -4.2426, 0, -4.2426, -4.2426, -4.015, -4.2426, -5.5432997, -4.015, -2.2961, -5.5432997, 0, -2.2961, -4.2426, -4.015, -4.2426, -6, 0, 0, -5.5432997, 0, -2.2961, -5.5432997, -4.015, -2.2961, -6, -4.015, 0, -6, 0, 0, -5.5432997, -4.015, -2.2961, -5.5432997, 0, 2.2961, -6, 0, 0, -6, -4.015, 0, -5.5432997, -4.015, 2.2961, -5.5432997, 0, 2.2961, -6, -4.015, 0, -4.2426, 0, 4.2426, -5.5432997, 0, 2.2961, -5.5432997, -4.015, 2.2961, -4.2426, -4.015, 4.2426, -4.2426, 0, 4.2426, -5.5432997, -4.015, 2.2961, -2.2961, 0, 5.5432997, -4.2426, 0, 4.2426, -4.2426, -4.015, 4.2426, -2.2961, -4.015, 5.5432997, -2.2961, 0, 5.5432997, -4.2426, -4.015, 4.2426, 0, 0, 6, -2.2961, 0, 5.5432997, -2.2961, -4.015, 5.5432997, 0, -4.015, 6, 0, 0, 6, -2.2961, -4.015, 5.5432997, 2.2961, 4.015, 5.5432997, 0, 4.015, 0, 0, 4.015, 6, 4.2426, 4.015, 4.2426, 0, 4.015, 0, 2.2961, 4.015, 5.5432997, 5.5432997, 4.015, 2.2961, 0, 4.015, 0, 4.2426, 4.015, 4.2426, 6, 4.015, 0, 0, 4.015, 0, 5.5432997, 4.015, 2.2961, 5.5432997, 4.015, -2.2961, 0, 4.015, 0, 6, 4.015, 0, 4.2426, 4.015, -4.2426, 0, 4.015, 0, 5.5432997, 4.015, -2.2961, 2.2961, 4.015, -5.5432997, 0, 4.015, 0, 4.2426, 4.015, -4.2426, 0, 4.015, -6, 0, 4.015, 0, 2.2961, 4.015, -5.5432997, -2.2961, 4.015, -5.5432997, 0, 4.015, 0, 0, 4.015, -6, -4.2426, 4.015, -4.2426, 0, 4.015, 0, -2.2961, 4.015, -5.5432997, -5.5432997, 4.015, -2.2961, 0, 4.015, 0, -4.2426, 4.015, -4.2426, -6, 4.015, 0, 0, 4.015, 0, -5.5432997, 4.015, -2.2961, -5.5432997, 4.015, 2.2961, 0, 4.015, 0, -6, 4.015, 0, -4.2426, 4.015, 4.2426, 0, 4.015, 0, -5.5432997, 4.015, 2.2961, -2.2961, 4.015, 5.5432997, 0, 4.015, 0, -4.2426, 4.015, 4.2426, 0, 4.015, 6, 0, 4.015, 0, -2.2961, 4.015, 5.5432997, 0, -4.015, 6, 0, -4.015, 0, 2.2961, -4.015, 5.5432997, 2.2961, -4.015, 5.5432997, 0, -4.015, 0, 4.2426, -4.015, 4.2426, 4.2426, -4.015, 4.2426, 0, -4.015, 0, 5.5432997, -4.015, 2.2961, 5.5432997, -4.015, 2.2961, 0, -4.015, 0, 6, -4.015, 0, 6, -4.015, 0, 0, -4.015, 0, 5.5432997, -4.015, -2.2961, 5.5432997, -4.015, -2.2961, 0, -4.015, 0, 4.2426, -4.015, -4.2426, 4.2426, -4.015, -4.2426, 0, -4.015, 0, 2.2961, -4.015, -5.5432997, 2.2961, -4.015, -5.5432997, 0, -4.015, 0, 0, -4.015, -6, 0, -4.015, -6, 0, -4.015, 0, -2.2961, -4.015, -5.5432997, -2.2961, -4.015, -5.5432997, 0, -4.015, 0, -4.2426, -4.015, -4.2426, -4.2426, -4.015, -4.2426, 0, -4.015, 0, -5.5432997, -4.015, -2.2961, -5.5432997, -4.015, -2.2961, 0, -4.015, 0, -6, -4.015, 0, -6, -4.015, 0, 0, -4.015, 0, -5.5432997, -4.015, 2.2961, -5.5432997, -4.015, 2.2961, 0, -4.015, 0, -4.2426, -4.015, 4.2426, -4.2426, -4.015, 4.2426, 0, -4.015, 0, -2.2961, -4.015, 5.5432997, -2.2961, -4.015, 5.5432997, 0, -4.015, 0, 0, -4.015, 6)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_q2uwy")]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.1541648, 498.19812, -0.40399492)
-max_speed = 10.0
+max_speed = 4.0
 
 [node name="DoorOpenSound" type="AudioStreamPlayer3D" parent="Player"]
 stream = ExtResource("8_i1fv3")
@@ -120,7 +131,13 @@ radius = 9.902344
 height = 66.04323
 
 [node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Sections/Section1"]
-transform = Transform3D(0.47591308, -0.14937955, -0.8667135, 0.26382303, 0.9643351, -0.021339366, 0.8389898, -0.21850337, 0.4983493, -23.089857, -10.728529, -144.82658)
+transform = Transform3D(0.47591308, -0.14937955, -0.8667135, 0.26382303, 0.9643351, -0.021339366, 0.8389898, -0.21850337, 0.4983493, -22.401457, -10.728529, -119.522194)
+use_collision = true
+radius = 9.902344
+height = 66.04323
+
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(-0.9457605, 0.25426707, -0.20220032, 0.26382303, 0.9643351, -0.02133938, 0.18956307, -0.073527016, -0.97911155, 100.42058, -10.728529, -72.08438)
 use_collision = true
 radius = 9.902344
 height = 66.04323
@@ -236,8 +253,26 @@ indoor_destination = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1505661, 0, 0.064468384)
 shape = SubResource("BoxShape3D_e304g")
 
+[node name="ReturnPoint" type="Node3D" parent="LighthouseRoom"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.934, -1.446, -3.557)
+
+[node name="EnterLightRoomArea" type="Area3D" parent="LighthouseRoom" node_paths=PackedStringArray("destination")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5594485, -1.1789856, -4.8308067)
+script = ExtResource("7_jvpjp")
+destination = NodePath("../../LightRoom/EnterPoint")
+actionbar_prompt = "Press E to go up"
+indoor_destination = false
+
+[node name="Collision" type="CollisionShape3D" parent="LighthouseRoom/EnterLightRoomArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1505661, 0.31399536, 0.102850914)
+shape = SubResource("BoxShape3D_e304g")
+
 [node name="Door" type="MeshInstance3D" parent="LighthouseRoom"]
 transform = Transform3D(0.38951933, 0, 0, 0, 2.5174923, 0, 0, 0, 1.7499651, -4.8288093, -1.2919312, 0)
+mesh = SubResource("BoxMesh_i1fv3")
+
+[node name="Ladder" type="MeshInstance3D" parent="LighthouseRoom"]
+transform = Transform3D(1.0935553, 0, 0, 0, 6.228223, 0, 0, 0, 0.48996314, 0.6268338, -0.52923584, -5.1303787)
 mesh = SubResource("BoxMesh_i1fv3")
 
 [node name="Light" type="MeshInstance3D" parent="LighthouseRoom"]
@@ -261,6 +296,42 @@ script = ExtResource("7_t871u")
 [node name="Collision" type="CollisionShape3D" parent="LighthouseRoom/RadarTerminal/InteractArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1661377, 0)
 shape = SubResource("CylinderShape3D_i1fv3")
+
+[node name="LightRoom" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 527.8584, 0)
+radius = 7.9106445
+height = 1.0
+sides = 16
+
+[node name="EnterPoint" type="Node3D" parent="LightRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9900208, 1.5637817, -2.3709679)
+
+[node name="ExitArea" type="Area3D" parent="LightRoom" node_paths=PackedStringArray("destination")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.798131, 3.7141724, -0.022398472)
+script = ExtResource("7_jvpjp")
+destination = NodePath("../../LighthouseRoom/ReturnPoint")
+actionbar_prompt = "Press E to exit"
+
+[node name="Collision" type="CollisionShape3D" parent="LightRoom/ExitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4046268, -2.9750977, -3.9481792)
+shape = SubResource("BoxShape3D_e304g")
+
+[node name="Roof" type="CSGCylinder3D" parent="LightRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.285339, 0)
+radius = 6.5
+height = 1.0
+sides = 16
+
+[node name="Glass" type="StaticBody3D" parent="LightRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.3169556, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="LightRoom/Glass"]
+material_override = ExtResource("10_14fha")
+mesh = SubResource("CylinderMesh_libv1")
+skeleton = NodePath("../..")
+
+[node name="Collision" type="CollisionShape3D" parent="LightRoom/Glass"]
+shape = SubResource("ConcavePolygonShape3D_p0wft")
 
 [node name="FadeRect" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -313,6 +384,10 @@ text = "Resume"
 [connection signal="body_exited" from="Lighthouse/EnterLighthouseArea" to="Lighthouse/EnterLighthouseArea" method="_on_body_exited"]
 [connection signal="body_entered" from="LighthouseRoom/ExitLighthouseArea" to="LighthouseRoom/ExitLighthouseArea" method="_on_body_entered"]
 [connection signal="body_exited" from="LighthouseRoom/ExitLighthouseArea" to="LighthouseRoom/ExitLighthouseArea" method="_on_body_exited"]
+[connection signal="body_entered" from="LighthouseRoom/EnterLightRoomArea" to="LighthouseRoom/EnterLightRoomArea" method="_on_body_entered"]
+[connection signal="body_exited" from="LighthouseRoom/EnterLightRoomArea" to="LighthouseRoom/EnterLightRoomArea" method="_on_body_exited"]
 [connection signal="body_entered" from="LighthouseRoom/RadarTerminal/InteractArea" to="LighthouseRoom/RadarTerminal/InteractArea" method="_on_body_entered"]
 [connection signal="body_exited" from="LighthouseRoom/RadarTerminal/InteractArea" to="LighthouseRoom/RadarTerminal/InteractArea" method="_on_body_exited"]
+[connection signal="body_entered" from="LightRoom/ExitArea" to="LightRoom/ExitArea" method="_on_body_entered"]
+[connection signal="body_exited" from="LightRoom/ExitArea" to="LightRoom/ExitArea" method="_on_body_exited"]
 [connection signal="pressed" from="PauseMenu/Control/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
