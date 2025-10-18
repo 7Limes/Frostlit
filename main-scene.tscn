@@ -1,40 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=13 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_q2uwy"]
 [ext_resource type="Material" uid="uid://ka1ngl72m45s" path="res://Assets/Materials/SnowParticle/snow-particle.tres" id="2_e304g"]
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="2_q2uwy"]
-[ext_resource type="AudioStream" uid="uid://dcv8gk3m2brw8" path="res://Assets/Audio/SnowFootsteps/snowstep-01.mp3" id="3_5k8xk"]
 [ext_resource type="AudioStream" uid="uid://dwiqpp2kuhmt3" path="res://Assets/Audio/wind.mp3" id="3_n7ce1"]
 [ext_resource type="Script" uid="uid://dto5xu1sp356w" path="res://random_audio_start.gd" id="4_5ulvj"]
-[ext_resource type="AudioStream" uid="uid://bveq1neova4v0" path="res://Assets/Audio/SnowFootsteps/snowstep-02.mp3" id="4_m2hq8"]
 [ext_resource type="ArrayMesh" uid="uid://do4uqx1m321p1" path="res://Assets/Models/lighthouse.obj" id="5_g86mt"]
-[ext_resource type="AudioStream" uid="uid://bm3iokwxncoe2" path="res://Assets/Audio/SnowFootsteps/snowstep-11.mp3" id="5_qh5v2"]
-[ext_resource type="AudioStream" uid="uid://de8lrx6evsa3f" path="res://Assets/Audio/SnowFootsteps/snowstep-03.mp3" id="6_slrkl"]
-[ext_resource type="AudioStream" uid="uid://d387nrrlhunt4" path="res://Assets/Audio/SnowFootsteps/snowstep-04.mp3" id="7_351bi"]
-[ext_resource type="AudioStream" uid="uid://c6axpp2ugwyq4" path="res://Assets/Audio/SnowFootsteps/snowstep-05.mp3" id="8_es55r"]
-[ext_resource type="AudioStream" uid="uid://d04dwaxfjpdqs" path="res://Assets/Audio/SnowFootsteps/snowstep-06.mp3" id="9_5ug5c"]
-[ext_resource type="AudioStream" uid="uid://w4oyxy8qs74" path="res://Assets/Audio/SnowFootsteps/snowstep-07.mp3" id="10_8opmy"]
-[ext_resource type="AudioStream" uid="uid://1xxl5kgbl3xd" path="res://Assets/Audio/SnowFootsteps/snowstep-08.mp3" id="11_qyw6v"]
-[ext_resource type="AudioStream" uid="uid://bra3wtgnmbr4d" path="res://Assets/Audio/SnowFootsteps/snowstep-09.mp3" id="12_fa8gu"]
-[ext_resource type="AudioStream" uid="uid://b45sw0a712boo" path="res://Assets/Audio/SnowFootsteps/snowstep-10.mp3" id="13_tova5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_g86mt"]
 material = ExtResource("2_e304g")
 size = Vector2(0.1, 0.1)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ps7dk"]
-streams_count = 11
-stream_0/stream = ExtResource("3_5k8xk")
-stream_1/stream = ExtResource("4_m2hq8")
-stream_2/stream = ExtResource("6_slrkl")
-stream_3/stream = ExtResource("7_351bi")
-stream_4/stream = ExtResource("8_es55r")
-stream_5/stream = ExtResource("9_5ug5c")
-stream_6/stream = ExtResource("10_8opmy")
-stream_7/stream = ExtResource("11_qyw6v")
-stream_8/stream = ExtResource("12_fa8gu")
-stream_9/stream = ExtResource("13_tova5")
-stream_10/stream = ExtResource("5_qh5v2")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qetym"]
 
@@ -49,18 +24,18 @@ fog_light_color = Color(0.2106368, 0.23213801, 0.26559368, 1)
 fog_density = 0.1283
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qetym"]
-size = Vector2(100, 100)
+size = Vector2(1000, 1000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2uwy"]
-size = Vector3(100, 1, 100)
+size = Vector3(1000, 1, 1000)
 
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_q2uwy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9819603, 2.7478411, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1541648, 2.7478411, -13.782367)
 
 [node name="SnowParticles" type="CPUParticles3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2309113, -3.845058)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3262415, -3.3104305)
 amount = 250
 randomness = 0.5
 lifetime_randomness = 0.1
@@ -72,14 +47,11 @@ gravity = Vector3(0, 0, 0)
 initial_velocity_min = 10.0
 initial_velocity_max = 25.0
 
-[node name="SnowFootstepSounds" type="AudioStreamPlayer3D" parent="Player"]
-stream = SubResource("AudioStreamRandomizer_ps7dk")
-volume_db = -28.608
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5e1uj")
 
 [node name="Ocean" type="StaticBody3D" parent="."]
+metadata/ground = "snow"
 
 [node name="Mesh" type="MeshInstance3D" parent="Ocean"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034121037, -0.13232398, -0.7484914)
@@ -87,7 +59,7 @@ material_override = ExtResource("1_q2uwy")
 mesh = SubResource("PlaneMesh_qetym")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ocean"]
+[node name="Collision" type="CollisionShape3D" parent="Ocean"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.62923765, 0)
 shape = SubResource("BoxShape3D_q2uwy")
 
@@ -106,6 +78,12 @@ rings = 8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.955662, 4.737488, -18.949688)
 radius = 6.7094727
 height = 22.094849
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Sections/Section1"]
+transform = Transform3D(1, 0, 0, 0, 0.97953314, -0.20128308, 0, 0.20128308, 0.97953314, -1.531517, -0.25128365, -14.326071)
+use_collision = true
+size = Vector3(4.098633, 1, 6.7285156)
+metadata/ground = "wood"
 
 [node name="WindAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_n7ce1")

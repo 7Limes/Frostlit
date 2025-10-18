@@ -5,3 +5,4 @@
 [resource]
 transparency = 1
 albedo_texture = ExtResource("1_1cwdx")
+uv1_scale = Vector3(10, 10, 10)

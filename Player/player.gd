@@ -10,11 +10,17 @@ extends CharacterBody3D
 
 @onready var camera = $Camera
 @onready var compass = $Camera/Compass
-@onready var snow_footstep_sounds = $SnowFootstepSounds
+
+@onready var STEP_SOUND_LOOKUP = {
+	"normal": $StoneFootstepSounds,
+	"snow": $SnowFootstepSounds,
+	"wood": $WoodFootstepSounds
+}
 
 var mouse_motion: Vector2 = Vector2.ZERO
 
 var footstep_timer: float = 0.0
+var current_ground_type: String = "normal"
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -29,6 +35,21 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func ground_tick():
+	var space_state = get_world_3d().direct_space_state
+	var origin = global_position
+	var end = origin + Vector3.DOWN * 1000
+	
+	var query = PhysicsRayQueryParameters3D.create(origin, end)
+	var result = space_state.intersect_ray(query)
+	if result:
+		if result.collider.has_meta('ground'):
+			current_ground_type = result.collider.get_meta('ground')
+		else:
+			current_ground_type = "normal"
+
 
 
 func look_tick():
@@ -68,7 +89,8 @@ func move_tick(delta: float):
 	if input_pressed:
 		velocity.x += accel_vector.x * acceleration * delta
 		velocity.z += accel_vector.y * acceleration * delta
-		footstep_timer = move_toward(footstep_timer, footstep_interval, delta)
+		if is_on_floor():
+			footstep_timer = move_toward(footstep_timer, footstep_interval, delta)
 	else:
 		var friction_velocity = Vector2(velocity.x, velocity.z)
 		friction_velocity = friction_velocity.move_toward(Vector2.ZERO, friction * delta)
@@ -84,14 +106,15 @@ func move_tick(delta: float):
 	velocity.y -= gravity * delta
 	
 
+func footstep_tick():
+	var footstep_sounds: AudioStreamPlayer3D = STEP_SOUND_LOOKUP[current_ground_type]
+	if footstep_timer == footstep_interval:
+		footstep_sounds.play()
+		footstep_timer = 0.0
+
+
 func update_compass():
 	compass.update_needle(-rotation.y)
-
-
-func footstep_tick():
-	if footstep_timer == footstep_interval:
-		snow_footstep_sounds.play()
-		footstep_timer = 0.0
 
 
 func _process(delta: float) -> void:
@@ -99,4 +122,5 @@ func _process(delta: float) -> void:
 	move_tick(delta)
 	move_and_slide()
 	update_compass()
+	ground_tick()
 	footstep_tick()
