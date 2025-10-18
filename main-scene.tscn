@@ -1,9 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=13 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_q2uwy"]
+[ext_resource type="Material" uid="uid://ka1ngl72m45s" path="res://Assets/Materials/SnowParticle/snow-particle.tres" id="2_e304g"]
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="2_q2uwy"]
 [ext_resource type="AudioStream" uid="uid://dwiqpp2kuhmt3" path="res://Assets/Audio/wind.mp3" id="3_n7ce1"]
 [ext_resource type="Script" uid="uid://dto5xu1sp356w" path="res://random_audio_start.gd" id="4_5ulvj"]
+[ext_resource type="ArrayMesh" uid="uid://do4uqx1m321p1" path="res://Assets/Models/lighthouse.obj" id="5_g86mt"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_g86mt"]
+material = ExtResource("2_e304g")
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qetym"]
 
@@ -14,6 +20,7 @@ sky_material = SubResource("ProceduralSkyMaterial_qetym")
 sky = SubResource("Sky_q2uwy")
 ambient_light_source = 3
 fog_enabled = true
+fog_light_color = Color(0.2106368, 0.23213801, 0.26559368, 1)
 fog_density = 0.1283
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qetym"]
@@ -25,7 +32,20 @@ size = Vector3(100, 1, 100)
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_q2uwy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8847854, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9819603, 2.7478411, 0)
+
+[node name="SnowParticles" type="CPUParticles3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2309113, -3.845058)
+amount = 250
+randomness = 0.5
+lifetime_randomness = 0.1
+mesh = SubResource("QuadMesh_g86mt")
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 5)
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5e1uj")
@@ -43,9 +63,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.62923765, 0)
 shape = SubResource("BoxShape3D_q2uwy")
 
 [node name="Island" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9477243, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.5372696, 0)
 use_collision = true
-radius = 7.9799323
+radius = 9.833695
 radial_segments = 24
 rings = 8
 
@@ -63,3 +83,7 @@ stream = ExtResource("3_n7ce1")
 autoplay = true
 parameters/looping = true
 script = ExtResource("4_5ulvj")
+
+[node name="Lighthouse" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4831586, 0)
+mesh = ExtResource("5_g86mt")
