@@ -134,7 +134,7 @@ func interact_tick():
 
 
 func compass_tick():
-	if compass_target != Vector2.ZERO:
+	if item_state != ItemState.NEXT:
 		var position_vector2 = Vector2(global_position.x, global_position.z)
 		var direction_to_target = compass_target - position_vector2
 		var angle_to_target = atan2(direction_to_target.x, direction_to_target.y)
