@@ -12,15 +12,16 @@ extends CharacterBody3D
 @onready var camera = $Camera
 @onready var compass = $Camera/Compass
 @onready var actionbar = %Actionbar
+@onready var snow_particles = $SnowParticles
 
 const DEFAULT_GROUND_TYPE = "stone"
 
-@onready var STEP_SOUND_LOOKUP = {
+@onready var step_sound_lookup = {
 	"stone": $SFX/StoneFootstepSounds,
 	"snow": $SFX/SnowFootstepSounds,
 	"wood": $SFX/WoodFootstepSounds
 }
-
+@onready var wind_sound = $SFX/WindSound
 
 var mouse_motion: Vector2 = Vector2.ZERO
 var frozen: bool = false
@@ -116,7 +117,7 @@ func move_tick(delta: float):
 	
 
 func footstep_tick():
-	var footstep_sounds: AudioStreamPlayer3D = STEP_SOUND_LOOKUP[current_ground_type]
+	var footstep_sounds: AudioStreamPlayer3D = step_sound_lookup[current_ground_type]
 	if footstep_timer == footstep_interval:
 		footstep_sounds.play()
 		footstep_timer = 0.0
@@ -150,6 +151,22 @@ func toggle_frozen(toggle_on: bool):
 
 func toggle_can_interact(toggle_on: bool):
 	can_interact = toggle_on
+
+
+func toggle_indoors(indoors: bool):
+	snow_particles.visible = not indoors
+	
+	# Handle wind audio
+	var bus_idx = AudioServer.get_bus_index("Ambience")
+	var effect = AudioServer.get_bus_effect(bus_idx, 0)
+	var tween = create_tween()
+	tween.set_parallel(true) # Allow both tweens to run simultaneously
+	if indoors:
+		tween.tween_method(func(value): effect.cutoff_hz = value, 20000.0, 2000.0, 2.0)
+		tween.tween_property(wind_sound, "volume_db", -5, 2.0)
+	else:
+		tween.tween_method(func(value): effect.cutoff_hz = value, 2000.0, 20000.0, 2.0)
+		tween.tween_property(wind_sound	, "volume_db", 0.0, 2.0)
 
 
 func _process(delta: float) -> void:

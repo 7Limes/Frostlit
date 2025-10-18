@@ -7,26 +7,28 @@ extends Area3D
 @export var interact_sfx: AudioStreamPlayer3D
 @export var arrive_sfx: AudioStreamPlayer3D
 
+@export var indoor_destination: bool = true
+
 @onready var fade_rect = %FadeRect
-@onready var player = %Player
 
 
 func _on_body_entered(body: Node3D) -> void:
 	var end_fade = func():
-		player.toggle_can_interact(true)
-		player.toggle_frozen(false)
+		body.toggle_can_interact(true)
+		body.toggle_frozen(false)
 		if arrive_sfx:
 			arrive_sfx.play()
 	
 	var halfway = func():
 		body.global_transform.origin = destination.global_transform.origin
 		body.rotation = destination.rotation
+		body.toggle_indoors(indoor_destination)
 		fade_rect.do_fade(false, end_fade)
 	
 	var fade = func():
 		fade_rect.do_fade(true, halfway)
-		player.toggle_can_interact(false)
-		player.toggle_frozen(true)
+		body.toggle_can_interact(false)
+		body.toggle_frozen(true)
 		if interact_sfx:
 			interact_sfx.play()
 	
