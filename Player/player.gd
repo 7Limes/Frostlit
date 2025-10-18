@@ -163,7 +163,7 @@ func toggle_indoors(indoors: bool):
 	tween.set_parallel(true) # Allow both tweens to run simultaneously
 	if indoors:
 		tween.tween_method(func(value): effect.cutoff_hz = value, 20000.0, 2000.0, 2.0)
-		tween.tween_property(wind_sound, "volume_db", -5, 2.0)
+		tween.tween_property(wind_sound, "volume_db", -10, 2.0)
 	else:
 		tween.tween_method(func(value): effect.cutoff_hz = value, 2000.0, 20000.0, 2.0)
 		tween.tween_property(wind_sound	, "volume_db", 0.0, 2.0)
