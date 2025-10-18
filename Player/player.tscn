@@ -140,6 +140,7 @@ horizontal_alignment = 1
 
 [node name="SnowParticles" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3262415, -3.3104305)
+visible = false
 amount = 250
 randomness = 0.5
 lifetime_randomness = 0.1

@@ -11,7 +11,7 @@ func _on_body_entered(body: Node3D) -> void:
 		set_deferred('monitoring', false)
 		
 		body.update_compass_target(Vector2.ZERO)
-		body.update_actionbar("Return to the lighthouse and use the repair part.")
+		body.update_actionbar("Return to the lighthouse to use the repair part.")
 		await get_tree().create_timer(5.0).timeout
 		body.update_actionbar("")
 
