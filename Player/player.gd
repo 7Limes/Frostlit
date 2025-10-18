@@ -185,7 +185,7 @@ func toggle_indoors(indoors: bool):
 	else:
 		tween.tween_method(func(value): effect.cutoff_hz = value, 2000.0, 20000.0, 2.0)
 		tween.tween_property(wind_sound	, "volume_db", 0.0, 2.0)
-		environment.environment.fog_density = 0.135
+		environment.environment.fog_density = 0.1
 
 
 func _process(delta: float) -> void:
