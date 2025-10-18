@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 @export var sensitivity = 0.1
@@ -10,17 +11,23 @@ extends CharacterBody3D
 
 @onready var camera = $Camera
 @onready var compass = $Camera/Compass
+@onready var actionbar = %Actionbar
+
+const DEFAULT_GROUND_TYPE = "stone"
 
 @onready var STEP_SOUND_LOOKUP = {
-	"normal": $StoneFootstepSounds,
-	"snow": $SnowFootstepSounds,
-	"wood": $WoodFootstepSounds
+	"stone": $Footsteps/StoneFootstepSounds,
+	"snow": $Footsteps/SnowFootstepSounds,
+	"wood": $Footsteps/WoodFootstepSounds
 }
 
 var mouse_motion: Vector2 = Vector2.ZERO
+var frozen: bool = false
 
 var footstep_timer: float = 0.0
-var current_ground_type: String = "normal"
+var current_ground_type: String = DEFAULT_GROUND_TYPE
+
+var interact_function = null  # Callable or null
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -37,6 +44,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
+# Tick functions
 func ground_tick():
 	var space_state = get_world_3d().direct_space_state
 	var origin = global_position
@@ -48,8 +56,7 @@ func ground_tick():
 		if result.collider.has_meta('ground'):
 			current_ground_type = result.collider.get_meta('ground')
 		else:
-			current_ground_type = "normal"
-
+			current_ground_type = DEFAULT_GROUND_TYPE
 
 
 func look_tick():
@@ -113,14 +120,43 @@ func footstep_tick():
 		footstep_timer = 0.0
 
 
+func interact_tick():
+	if interact_function != null and Input.is_action_just_pressed('interact'):
+		interact_function.call()
+
+
 func update_compass():
 	compass.update_needle(-rotation.y)
+
+
+# External functions 
+func update_actionbar(new_text: String):
+	actionbar.text = new_text
+	if new_text == "":
+		actionbar.visible = false
+	else:
+		actionbar.visible = true
+
+
+func update_interact_function(interact_func):
+	interact_function = interact_func
+
+
+func toggle_frozen(toggle_on: bool):
+	frozen = toggle_on
 
 
 func _process(delta: float) -> void:
 	look_tick()
 	move_tick(delta)
+	
+	if frozen:
+		velocity = Vector3.ZERO
+	
 	move_and_slide()
+	
 	update_compass()
+	interact_tick()
+	
 	ground_tick()
 	footstep_tick()

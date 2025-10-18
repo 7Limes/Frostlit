@@ -1,0 +1,31 @@
+extends Area3D
+
+
+@export var destination: Node3D
+@export var actionbar_prompt: String
+
+@onready var fade_rect = %FadeRect
+@onready var player = %Player
+
+
+func _on_body_entered(body: Node3D) -> void:
+	var end_fade = func():
+		player.toggle_frozen(false)
+	
+	var halfway = func():
+		body.global_transform.origin = destination.global_transform.origin
+		body.rotation = destination.rotation
+		fade_rect.do_fade(false, end_fade)
+	
+	var fade = func():
+		fade_rect.do_fade(true, halfway)
+		player.toggle_frozen(true)
+	
+	if body is Player:
+		body.update_actionbar(actionbar_prompt)
+		body.update_interact_function(fade)
+
+func _on_body_exited(body: Node3D) -> void:
+	if body is Player:
+		body.update_actionbar("")
+		body.update_interact_function(null)

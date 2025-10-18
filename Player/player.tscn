@@ -79,13 +79,44 @@ transform = Transform3D(0.1, 0, 0, 0, 0.09790028, -0.02038468, 0, 0.02038468, 0.
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_4ntmi")
 
-[node name="SnowFootstepSounds" type="AudioStreamPlayer3D" parent="."]
-stream = SubResource("AudioStreamRandomizer_8mwp6")
-volume_db = -28.608
+[node name="Footsteps" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8443798, 0)
 
-[node name="StoneFootstepSounds" type="AudioStreamPlayer3D" parent="."]
+[node name="SnowFootstepSounds" type="AudioStreamPlayer3D" parent="Footsteps"]
+stream = SubResource("AudioStreamRandomizer_8mwp6")
+volume_db = -17.734
+
+[node name="StoneFootstepSounds" type="AudioStreamPlayer3D" parent="Footsteps"]
 stream = SubResource("AudioStreamRandomizer_qemgg")
 
-[node name="WoodFootstepSounds" type="AudioStreamPlayer3D" parent="."]
+[node name="WoodFootstepSounds" type="AudioStreamPlayer3D" parent="Footsteps"]
 stream = SubResource("AudioStreamRandomizer_qs4pp")
-volume_db = -26.716
+volume_db = -23.609
+
+[node name="ActionbarControl" type="Control" parent="Footsteps"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Actionbar" type="Label" parent="Footsteps/ActionbarControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "text"
+horizontal_alignment = 1

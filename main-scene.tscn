@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=16 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_q2uwy"]
 [ext_resource type="Material" uid="uid://ka1ngl72m45s" path="res://Assets/Materials/SnowParticle/snow-particle.tres" id="2_e304g"]
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="2_q2uwy"]
 [ext_resource type="AudioStream" uid="uid://dwiqpp2kuhmt3" path="res://Assets/Audio/wind.mp3" id="3_n7ce1"]
-[ext_resource type="Script" uid="uid://dto5xu1sp356w" path="res://random_audio_start.gd" id="4_5ulvj"]
+[ext_resource type="Script" uid="uid://dto5xu1sp356w" path="res://Scripts/Audio/random_audio_start.gd" id="4_5ulvj"]
 [ext_resource type="ArrayMesh" uid="uid://do4uqx1m321p1" path="res://Assets/Models/lighthouse.obj" id="5_g86mt"]
+[ext_resource type="Script" uid="uid://dqiqxpxds8shn" path="res://Scripts/Lighthouse/teleport_area.gd" id="7_jvpjp"]
+[ext_resource type="Script" uid="uid://bjhuygaqnea2o" path="res://Scripts/General/fade_rect.gd" id="8_t871u"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_g86mt"]
 material = ExtResource("2_e304g")
@@ -29,9 +31,13 @@ size = Vector2(1000, 1000)
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2uwy"]
 size = Vector3(1000, 1, 1000)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_e304g"]
+size = Vector3(2.1325378, 2.9669495, 1.788208)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_q2uwy")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1541648, 2.7478411, -13.782367)
 
 [node name="SnowParticles" type="CPUParticles3D" parent="Player"]
@@ -49,6 +55,12 @@ initial_velocity_max = 25.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5e1uj")
+
+[node name="WindAudio" type="AudioStreamPlayer" parent="WorldEnvironment"]
+stream = ExtResource("3_n7ce1")
+autoplay = true
+parameters/looping = true
+script = ExtResource("4_5ulvj")
 
 [node name="Ocean" type="StaticBody3D" parent="."]
 metadata/ground = "snow"
@@ -85,12 +97,53 @@ use_collision = true
 size = Vector3(4.098633, 1, 6.7285156)
 metadata/ground = "wood"
 
-[node name="WindAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_n7ce1")
-autoplay = true
-parameters/looping = true
-script = ExtResource("4_5ulvj")
-
 [node name="Lighthouse" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4831586, 0)
 mesh = ExtResource("5_g86mt")
+
+[node name="EnterLighthouseArea" type="Area3D" parent="Lighthouse" node_paths=PackedStringArray("destination")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.9892716)
+script = ExtResource("7_jvpjp")
+destination = NodePath("../../LighthouseRoom/EnterPoint")
+actionbar_prompt = "Press E to enter"
+
+[node name="Collision" type="CollisionShape3D" parent="Lighthouse/EnterLighthouseArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05230713, 0.85198975, 0.3881836)
+shape = SubResource("BoxShape3D_e304g")
+
+[node name="ExitPoint" type="Node3D" parent="Lighthouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06247878, 1.6217206, -4.1460495)
+
+[node name="LighthouseRoom" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 500, 0)
+use_collision = true
+flip_faces = true
+size = Vector3(10, 5, 10)
+metadata/ground = "wood"
+
+[node name="EnterPoint" type="Node3D" parent="LighthouseRoom"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.159851, -1.2760925, 0)
+
+[node name="ExitLighthouseArea" type="Area3D" parent="LighthouseRoom" node_paths=PackedStringArray("destination")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8338094, -1.1789856, -0.022398472)
+script = ExtResource("7_jvpjp")
+destination = NodePath("../../Lighthouse/ExitPoint")
+actionbar_prompt = "Press E to exit"
+
+[node name="Collision" type="CollisionShape3D" parent="LighthouseRoom/ExitLighthouseArea"]
+shape = SubResource("BoxShape3D_e304g")
+
+[node name="FadeRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -38.0
+offset_top = -41.0
+offset_right = 1187.0
+offset_bottom = 672.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("8_t871u")
+
+[connection signal="body_entered" from="Lighthouse/EnterLighthouseArea" to="Lighthouse/EnterLighthouseArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Lighthouse/EnterLighthouseArea" to="Lighthouse/EnterLighthouseArea" method="_on_body_exited"]
+[connection signal="body_entered" from="LighthouseRoom/ExitLighthouseArea" to="LighthouseRoom/ExitLighthouseArea" method="_on_body_entered"]
+[connection signal="body_exited" from="LighthouseRoom/ExitLighthouseArea" to="LighthouseRoom/ExitLighthouseArea" method="_on_body_exited"]
