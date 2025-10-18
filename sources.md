@@ -10,3 +10,4 @@
 - Door open and close: https://freesound.org/people/JakLocke/sounds/261110/
 - Ice cracking: https://freesound.org/people/timbreknight/sounds/342546/
 - Boom sounds: https://freesound.org/people/bareform/sounds/237558/
+- Beacon repair: https://freesound.org/people/dheming/sounds/197398/
