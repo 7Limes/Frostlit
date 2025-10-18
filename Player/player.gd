@@ -32,6 +32,15 @@ var current_ground_type: String = DEFAULT_GROUND_TYPE
 var interact_function = null  # Callable or null
 var can_interact: bool = true
 
+var compass_target: Vector2 = Vector2.ZERO
+
+enum ItemState {
+	NONE,  # No item, compass targeted 
+	HAS,   # Has item, compass targeted
+	NEXT   # No item, compass not targeted
+}
+var item_state: ItemState = ItemState.NEXT
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -128,8 +137,13 @@ func interact_tick():
 		interact_function.call()
 
 
-func update_compass():
-	compass.update_needle(-rotation.y)
+func compass_tick():
+	if compass_target != Vector2.ZERO:
+		var position_vector2 = Vector2(global_position.x, global_position.z)
+		var direction_to_target = compass_target - position_vector2
+		var angle_to_target = atan2(direction_to_target.x, direction_to_target.y)
+		var relative_angle = angle_to_target - rotation.y
+		compass.update_needle(relative_angle + PI)
 
 
 # External functions 
@@ -143,6 +157,10 @@ func update_actionbar(new_text: String):
 
 func update_interact_function(interact_func):
 	interact_function = interact_func
+
+
+func update_compass_target(new_target: Vector2):
+	compass_target = new_target
 
 
 func toggle_frozen(toggle_on: bool):
@@ -178,7 +196,7 @@ func _process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	update_compass()
+	compass_tick()
 	interact_tick()
 	
 	ground_tick()

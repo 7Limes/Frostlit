@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dip62y0y7af11"]
+[gd_scene load_steps=6 format=3 uid="uid://dip62y0y7af11"]
 
 [ext_resource type="Script" uid="uid://dou3oj0wkgbng" path="res://Compass/compass.gd" id="1_f8ea4"]
 [ext_resource type="ArrayMesh" uid="uid://duv0bhl1g3xw8" path="res://Assets/Models/base-new.obj" id="2_5aya3"]
 [ext_resource type="ArrayMesh" uid="uid://bh3wu2mfonad7" path="res://Assets/Models/needle.obj" id="2_f8ea4"]
 [ext_resource type="Material" uid="uid://b1bqiufh1204w" path="res://Assets/Materials/Compass/compass.tres" id="3_5aya3"]
+[ext_resource type="Material" uid="uid://doomtrm18356x" path="res://Assets/Materials/Compass/needle.tres" id="4_1s413"]
 
 [node name="Compass" type="Node3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -14,4 +15,5 @@ mesh = ExtResource("2_5aya3")
 surface_material_override/0 = ExtResource("3_5aya3")
 
 [node name="Needle" type="MeshInstance3D" parent="."]
+material_override = ExtResource("4_1s413")
 mesh = ExtResource("2_f8ea4")

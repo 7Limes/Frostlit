@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=23 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_q2uwy"]
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="2_q2uwy"]
 [ext_resource type="ArrayMesh" uid="uid://do4uqx1m321p1" path="res://Assets/Models/lighthouse.obj" id="5_g86mt"]
+[ext_resource type="Script" uid="uid://2e23ufbfrlxt" path="res://Radar/section.gd" id="5_ikad4"]
+[ext_resource type="Script" uid="uid://3m43tgnbe0a6" path="res://Scripts/Item/item.gd" id="6_i1fv3"]
 [ext_resource type="Script" uid="uid://dqiqxpxds8shn" path="res://Scripts/Lighthouse/teleport_area.gd" id="7_jvpjp"]
+[ext_resource type="Script" uid="uid://ctkrdogec66yk" path="res://Radar/radar.gd" id="7_t871u"]
 [ext_resource type="AudioStream" uid="uid://bsnwukbh1y8dl" path="res://Assets/Audio/Door/door-open.mp3" id="8_i1fv3"]
 [ext_resource type="Script" uid="uid://bjhuygaqnea2o" path="res://Scripts/General/fade_rect.gd" id="8_t871u"]
 [ext_resource type="AudioStream" uid="uid://bck3t1o7ld4wu" path="res://Assets/Audio/Door/door_close.mp3" id="9_pc8c5"]
@@ -16,7 +19,6 @@ sky_material = SubResource("ProceduralSkyMaterial_qetym")
 [sub_resource type="Environment" id="Environment_5e1uj"]
 sky = SubResource("Sky_q2uwy")
 ambient_light_source = 3
-fog_enabled = true
 fog_light_color = Color(0.2106368, 0.23213801, 0.26559368, 1)
 fog_density = 0.1283
 
@@ -26,14 +28,27 @@ size = Vector2(1000, 1000)
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2uwy"]
 size = Vector3(1000, 1, 1000)
 
+[sub_resource type="PrismMesh" id="PrismMesh_jvpjp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pc8c5"]
+radius = 0.8
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_e304g"]
-size = Vector3(1.8314056, 2.9669495, 2.8923035)
+size = Vector3(1.8314056, 2.9669495, 2.702011)
 
 [sub_resource type="BoxMesh" id="BoxMesh_i1fv3"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_jvpjp"]
 radius = 0.1
 height = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ikad4"]
+top_radius = 0.75
+bottom_radius = 0.75
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i1fv3"]
+height = 3.0847168
+radius = 1.5
 
 [node name="Node3D" type="Node3D"]
 
@@ -42,11 +57,9 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1541648, 2.7478411, -13.782367)
 
 [node name="DoorOpenSound" type="AudioStreamPlayer3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1541648, -0.42030263, 10.201856)
 stream = ExtResource("8_i1fv3")
 
 [node name="DoorCloseSound" type="AudioStreamPlayer3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1541648, -0.42029595, 10.201208)
 stream = ExtResource("9_pc8c5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -56,7 +69,7 @@ environment = SubResource("Environment_5e1uj")
 metadata/ground = "snow"
 
 [node name="Mesh" type="MeshInstance3D" parent="Ocean"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034121037, -0.13232398, -0.7484914)
+transform = Transform3D(0.999985, -0.004064489, -0.0036769176, 0.0040745833, 0.99998796, 0.0027436886, 0.0036657325, -0.0027586191, 0.9999895, 0.24344587, -0.17764306, -0.5740396)
 material_override = ExtResource("1_q2uwy")
 mesh = SubResource("PlaneMesh_qetym")
 skeleton = NodePath("")
@@ -73,19 +86,112 @@ radial_segments = 24
 rings = 8
 
 [node name="Sections" type="Node3D" parent="."]
+unique_name_in_owner = true
 
-[node name="Section1" type="Node3D" parent="Sections"]
+[node name="Section1" type="Node3D" parent="Sections" node_paths=PackedStringArray("item_node")]
+script = ExtResource("5_ikad4")
+item_node = NodePath("Item")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Sections/Section1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.955662, 4.737488, -18.949688)
+transform = Transform3D(1, 0, 0, 0, 0.82839286, 0.5601475, 0, -0.5601475, 0.82839286, 22.810595, 0.3268528, -18.915524)
+use_collision = true
 radius = 6.7094727
-height = 22.094849
+height = 45.106964
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(0.85903645, 0.36015043, 0.3637966, -0.26998314, 0.92252946, -0.27576932, -0.43493155, 0.13867694, 0.889721, 35.185623, -10.728529, -47.41249)
+use_collision = true
+radius = 9.902344
+height = 66.04323
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(0.86094815, -0.22544771, 0.45600572, 0.26382297, 0.96433496, -0.021339372, -0.43493155, 0.13867691, 0.88972086, 131.75237, -10.728529, -145.21118)
+use_collision = true
+radius = 9.902344
+height = 66.04323
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(0.87745094, 0.2872218, 0.38416538, -0.20227234, 0.9477724, -0.24660403, -0.43493155, 0.13867691, 0.88972086, 98.44974, -10.728529, -179.35104)
+use_collision = true
+radius = 9.902344
+height = 66.04323
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(0.47591308, -0.14937955, -0.8667135, 0.26382303, 0.9643351, -0.021339366, 0.8389898, -0.21850337, 0.4983493, -23.089857, -10.728529, -144.82658)
+use_collision = true
+radius = 9.902344
+height = 66.04323
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(0.47670835, -0.124675356, -0.8701753, -0.20227237, 0.9477725, -0.24660407, 0.85547346, 0.29357064, 0.4265925, 34.53176, -10.728529, -202.51903)
+use_collision = true
+radius = 9.902344
+height = 66.04323
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(-0.7337269, -0.5398785, -0.41252407, 0.40074757, 0.14642657, -0.90441185, 0.54867685, -0.8289095, 0.10891788, 121.71675, 2.1057396, -260.46503)
+use_collision = true
+radius = 9.902344
+height = 66.04323
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(-0.16673627, -0.90863717, 0.3828551, 0.4234122, -0.41664895, -0.8044412, 0.890461, 0.02797591, 0.4541984, 76.73215, 2.1057396, -276.21497)
+use_collision = true
+radius = 9.902344
+height = 66.04323
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(0.7472362, 0.6069358, 0.27067876, -0.50246656, 0.78255844, -0.36759996, -0.43493155, 0.13867694, 0.889721, 3.7358932, -15.839488, -86.26103)
+use_collision = true
+radius = 6.7094727
+height = 84.78519
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(-0.34579992, 0.3456025, -0.87234247, -0.5249699, -0.84183013, -0.12541409, -0.7777075, 0.4145853, 0.4725358, 47.96012, -13.767037, -60.426952)
+use_collision = true
+radius = 6.7094727
+height = 75.92044
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(0.27120408, 0.8994217, -0.34276676, -0.56711483, -0.13841861, -0.8119243, -0.7777076, 0.41458526, 0.47253576, 53.753265, -1.0615535, -121.37274)
+use_collision = true
+radius = 6.7094727
+height = 90.696304
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(0.8236261, -0.089849144, -0.5599708, -0.54942054, 0.11842786, -0.8271108, 0.14063136, 0.98888946, 0.04817527, 83.93995, -2.9320793, -195.9692)
+use_collision = true
+radius = 6.7094727
+height = 188.56421
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(-0.7778066, -0.56946796, 0.26593855, 0.10433763, 0.30026367, 0.9481328, -0.6197829, 0.7652111, -0.17413008, 58.7547, -1.2739139, -180.05673)
+use_collision = true
+radius = 6.7094727
+height = 123.75958
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(0.8816084, 0.3909861, 0.2643793, -0.47198153, 0.7303181, 0.49383077, 0, -0.5601475, 0.82839286, -8.720428, -9.554899, -38.330048)
+use_collision = true
+radius = 9.995117
+height = 67.6221
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Sections/Section1"]
 transform = Transform3D(1, 0, 0, 0, 0.97953314, -0.20128308, 0, 0.20128308, 0.97953314, -1.531517, -0.25128365, -14.326071)
 use_collision = true
 size = Vector3(4.098633, 1, 6.7285156)
 metadata/ground = "wood"
+
+[node name="Item" type="Area3D" parent="Sections/Section1"]
+transform = Transform3D(0.99586225, 0, -0.090875916, 0, 1, 0, 0.090875916, 0, 0.99586225, 96.022964, 1.3381969, -250.88284)
+script = ExtResource("6_i1fv3")
+
+[node name="Mesh" type="MeshInstance3D" parent="Sections/Section1/Item"]
+mesh = SubResource("PrismMesh_jvpjp")
+skeleton = NodePath("../..")
+
+[node name="Collision" type="CollisionShape3D" parent="Sections/Section1/Item"]
+shape = SubResource("SphereShape3D_pc8c5")
 
 [node name="Lighthouse" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4831586, 0)
@@ -99,11 +205,11 @@ actionbar_prompt = "Press E to enter"
 interact_sfx = NodePath("../../Player/DoorOpenSound")
 
 [node name="Collision" type="CollisionShape3D" parent="Lighthouse/EnterLighthouseArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05230713, 0.85198975, 0.3881836)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05230713, 0.85198975, 0.48332977)
 shape = SubResource("BoxShape3D_e304g")
 
 [node name="ExitPoint" type="Node3D" parent="Lighthouse"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06247878, 1.22493, -4.1460495)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06247878, 0.76714563, -4.374405)
 
 [node name="LighthouseRoom" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 500, 0)
@@ -142,6 +248,17 @@ light_energy = 7.75
 spot_range = 7.719363
 spot_angle = 48.226097
 
+[node name="RadarTerminal" type="MeshInstance3D" parent="LighthouseRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37690282, -2.640442, 0)
+mesh = SubResource("CylinderMesh_ikad4")
+
+[node name="InteractArea" type="Area3D" parent="LighthouseRoom/RadarTerminal"]
+script = ExtResource("7_t871u")
+
+[node name="Collision" type="CollisionShape3D" parent="LighthouseRoom/RadarTerminal/InteractArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1661377, 0)
+shape = SubResource("CylinderShape3D_i1fv3")
+
 [node name="FadeRect" type="ColorRect" parent="."]
 unique_name_in_owner = true
 offset_left = -38.0
@@ -152,7 +269,10 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0)
 script = ExtResource("8_t871u")
 
+[connection signal="body_entered" from="Sections/Section1/Item" to="Sections/Section1/Item" method="_on_body_entered"]
 [connection signal="body_entered" from="Lighthouse/EnterLighthouseArea" to="Lighthouse/EnterLighthouseArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Lighthouse/EnterLighthouseArea" to="Lighthouse/EnterLighthouseArea" method="_on_body_exited"]
 [connection signal="body_entered" from="LighthouseRoom/ExitLighthouseArea" to="LighthouseRoom/ExitLighthouseArea" method="_on_body_entered"]
 [connection signal="body_exited" from="LighthouseRoom/ExitLighthouseArea" to="LighthouseRoom/ExitLighthouseArea" method="_on_body_exited"]
+[connection signal="body_entered" from="LighthouseRoom/RadarTerminal/InteractArea" to="LighthouseRoom/RadarTerminal/InteractArea" method="_on_body_entered"]
+[connection signal="body_exited" from="LighthouseRoom/RadarTerminal/InteractArea" to="LighthouseRoom/RadarTerminal/InteractArea" method="_on_body_exited"]
