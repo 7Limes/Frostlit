@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var gravity: float = 8.0
 
 @onready var camera = $Camera
+@onready var compass = $Camera/Compass
 
 var mouse_motion: Vector2 = Vector2.ZERO
 
@@ -75,9 +76,14 @@ func move_tick(delta: float):
 		velocity.z = horizontal_velocity.y
 	
 	velocity.y -= gravity * delta
+	
+
+func update_compass():
+	compass.update_needle(-rotation.y)
 
 
 func _process(delta: float) -> void:
 	look_tick()
 	move_tick(delta)
 	move_and_slide()
+	update_compass()

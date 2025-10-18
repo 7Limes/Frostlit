@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://1a0i72xpxodg"]
+[gd_scene load_steps=4 format=3 uid="uid://1a0i72xpxodg"]
 
 [ext_resource type="Script" uid="uid://ddkj7s8uxjlyb" path="res://Player/player.gd" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://dip62y0y7af11" path="res://Compass/compass.tscn" id="2_4ntmi"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4ntmi"]
 
@@ -9,8 +10,10 @@ floor_max_angle = 1.134464
 script = ExtResource("1_l8h54")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.059183, -0.7182361)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5814699, 0)
+
+[node name="Compass" parent="Camera" instance=ExtResource("2_4ntmi")]
+transform = Transform3D(0.1, 0, 0, 0, 0.09790028, -0.02038468, 0, 0.02038468, 0.09790028, 0.46948004, -0.36869794, -0.6335737)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.881114, 0)
 shape = SubResource("CylinderShape3D_4ntmi")

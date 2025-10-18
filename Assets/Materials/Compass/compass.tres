@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b1bqiufh1204w"]
+
+[ext_resource type="Texture2D" uid="uid://biis0yns4pbm7" path="res://Assets/Materials/Compass/compass.png" id="1_oc5y4"]
+
+[resource]
+albedo_texture = ExtResource("1_oc5y4")

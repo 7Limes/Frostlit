@@ -22,8 +22,8 @@ size = Vector3(100, 1, 100)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.6649306, 0.74690515, 0, -0.74690515, 0.6649306, 0, 3.497411, 0)
+[node name="Player" parent="." instance=ExtResource("2_q2uwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8847854, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5e1uj")
@@ -47,5 +47,11 @@ radius = 7.9799323
 radial_segments = 24
 rings = 8
 
-[node name="Player" parent="." instance=ExtResource("2_q2uwy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8847854, 0)
+[node name="Sections" type="Node3D" parent="."]
+
+[node name="Section1" type="Node3D" parent="Sections"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Sections/Section1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.955662, 4.737488, -18.949688)
+radius = 6.7094727
+height = 22.094849
