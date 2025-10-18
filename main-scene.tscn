@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=10 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_q2uwy"]
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="2_q2uwy"]
+[ext_resource type="AudioStream" uid="uid://dwiqpp2kuhmt3" path="res://Assets/Audio/wind.mp3" id="3_n7ce1"]
+[ext_resource type="Script" uid="uid://dto5xu1sp356w" path="res://random_audio_start.gd" id="4_5ulvj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qetym"]
 
@@ -55,3 +57,9 @@ rings = 8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.955662, 4.737488, -18.949688)
 radius = 6.7094727
 height = 22.094849
+
+[node name="WindAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_n7ce1")
+autoplay = true
+parameters/looping = true
+script = ExtResource("4_5ulvj")
