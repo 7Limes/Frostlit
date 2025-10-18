@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=40 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_q2uwy"]
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="2_q2uwy"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bck3t1o7ld4wu" path="res://Assets/Audio/Door/door_close.mp3" id="9_pc8c5"]
 [ext_resource type="Script" uid="uid://bi3xulqxmf40o" path="res://Scripts/General/pause_menu.gd" id="12_14fha"]
 [ext_resource type="Script" uid="uid://d1e5i4g6oy0wj" path="res://Scripts/Beacon/beacon.gd" id="14_qh5v2"]
+[ext_resource type="AudioStream" uid="uid://cktltx754rtnq" path="res://Assets/Audio/radar-ping.mp3" id="15_351bi"]
 [ext_resource type="Material" uid="uid://ckhv8g8ayig40" path="res://Assets/Materials/Basic/black.tres" id="15_kudqo"]
 [ext_resource type="AudioStream" uid="uid://b5i6y7i4vyo5v" path="res://Assets/Audio/fix.mp3" id="15_slrkl"]
 [ext_resource type="ArrayMesh" uid="uid://dejosbsv1h0x3" path="res://Assets/Models/creature.obj" id="16_5k8xk"]
@@ -394,6 +395,9 @@ shape = SubResource("CylinderShape3D_i1fv3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5063506e-12)
 mesh = SubResource("CylinderMesh_ikad4")
 skeleton = NodePath("../../..")
+
+[node name="PingSound" type="AudioStreamPlayer3D" parent="LighthouseRoom/Light/RadarTerminal"]
+stream = ExtResource("15_351bi")
 
 [node name="Beacon" type="Area3D" parent="LighthouseRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63892174, -1.3442383, 4.037608)

@@ -11,3 +11,4 @@
 - Ice cracking: https://freesound.org/people/timbreknight/sounds/342546/
 - Boom sounds: https://freesound.org/people/bareform/sounds/237558/
 - Beacon repair: https://freesound.org/people/dheming/sounds/197398/
+- Radar ping: https://freesound.org/people/DrMrSir/sounds/529559/

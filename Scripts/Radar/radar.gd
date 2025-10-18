@@ -2,9 +2,9 @@ extends Area3D
 
 
 @onready var sections = %Sections
+@onready var ping_sound = $PingSound
 
 var section_number: int = 0
-
 
 
 func _on_body_entered(body: Node3D) -> void:
@@ -18,6 +18,7 @@ func _on_body_entered(body: Node3D) -> void:
 		body.update_compass_target(new_target)
 		body.update_actionbar("Your compass is now pointing to the nearest part.")
 		body.update_interact_function(null)
+		ping_sound.play()
 	
 	if body is Player:
 		if body.item_state == Player.ItemState.NEXT:
