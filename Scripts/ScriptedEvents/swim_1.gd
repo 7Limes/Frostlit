@@ -2,7 +2,7 @@ extends Area3D
 
 @onready var creature = %Creature
 @onready var start_pos: Vector3 = creature.position
-@onready var destination = $"../../SwimDestination".position
+@onready var destination = $"../SwimDestination".position
 
 const MOVE_DURATION = 1.0
 

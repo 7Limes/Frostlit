@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=38 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_q2uwy"]
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="2_q2uwy"]
@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://be2mws23qy2ip" path="res://Assets/Models/Room.blend" id="9_libv1"]
 [ext_resource type="AudioStream" uid="uid://bck3t1o7ld4wu" path="res://Assets/Audio/Door/door_close.mp3" id="9_pc8c5"]
 [ext_resource type="Script" uid="uid://bi3xulqxmf40o" path="res://Scripts/General/pause_menu.gd" id="12_14fha"]
+[ext_resource type="Script" uid="uid://d1e5i4g6oy0wj" path="res://Scripts/Beacon/beacon.gd" id="14_qh5v2"]
 [ext_resource type="Material" uid="uid://ckhv8g8ayig40" path="res://Assets/Materials/Basic/black.tres" id="15_kudqo"]
+[ext_resource type="AudioStream" uid="uid://b5i6y7i4vyo5v" path="res://Assets/Audio/fix.mp3" id="15_slrkl"]
 [ext_resource type="ArrayMesh" uid="uid://dejosbsv1h0x3" path="res://Assets/Models/creature.obj" id="16_5k8xk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qetym"]
@@ -28,7 +30,7 @@ sky = SubResource("Sky_q2uwy")
 ambient_light_source = 3
 fog_enabled = true
 fog_light_color = Color(0.2106368, 0.23213801, 0.26559368, 1)
-fog_density = 0.1337
+fog_density = 0.1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qetym"]
 size = Vector2(1000, 1000)
@@ -56,13 +58,18 @@ size = Vector3(2.1780052, 3.6185398, 2.9713397)
 radius = 0.1
 height = 0.2
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i1fv3"]
+height = 3.0847168
+radius = 1.5
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_ikad4"]
 top_radius = 0.75
 bottom_radius = 0.75
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_i1fv3"]
-height = 3.0847168
-radius = 1.5
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_351bi"]
+radius = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_es55r"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_r7pl7"]
 data = PackedVector3Array(2.1048, 3.5, 5.0813, 0, 3.5, 5.5, 0, 0, 5.5, 2.1048, 0, 5.0813, 2.1048, 3.5, 5.0813, 0, 0, 5.5, 3.8890998, 3.5, 3.8890998, 2.1048, 3.5, 5.0813, 2.1048, 0, 5.0813, 3.8890998, 0, 3.8890998, 3.8890998, 3.5, 3.8890998, 2.1048, 0, 5.0813, 5.0813, 3.5, 2.1048, 3.8890998, 3.5, 3.8890998, 3.8890998, 0, 3.8890998, 5.0813, 0, 2.1048, 5.0813, 3.5, 2.1048, 3.8890998, 0, 3.8890998, 5.5, 3.5, 0, 5.0813, 3.5, 2.1048, 5.0813, 0, 2.1048, 5.5, 0, 0, 5.5, 3.5, 0, 5.0813, 0, 2.1048, 5.0813, 3.5, -2.1048, 5.5, 3.5, 0, 5.5, 0, 0, 5.0813, 0, -2.1048, 5.0813, 3.5, -2.1048, 5.5, 0, 0, 3.8890998, 3.5, -3.8890998, 5.0813, 3.5, -2.1048, 5.0813, 0, -2.1048, 3.8890998, 0, -3.8890998, 3.8890998, 3.5, -3.8890998, 5.0813, 0, -2.1048, 2.1048, 3.5, -5.0813, 3.8890998, 3.5, -3.8890998, 3.8890998, 0, -3.8890998, 2.1048, 0, -5.0813, 2.1048, 3.5, -5.0813, 3.8890998, 0, -3.8890998, 0, 3.5, -5.5, 2.1048, 3.5, -5.0813, 2.1048, 0, -5.0813, 0, 0, -5.5, 0, 3.5, -5.5, 2.1048, 0, -5.0813, -2.1048, 3.5, -5.0813, 0, 3.5, -5.5, 0, 0, -5.5, -2.1048, 0, -5.0813, -2.1048, 3.5, -5.0813, 0, 0, -5.5, -3.8890998, 3.5, -3.8890998, -2.1048, 3.5, -5.0813, -2.1048, 0, -5.0813, -3.8890998, 0, -3.8890998, -3.8890998, 3.5, -3.8890998, -2.1048, 0, -5.0813, -5.0813, 3.5, -2.1048, -3.8890998, 3.5, -3.8890998, -3.8890998, 0, -3.8890998, -5.0813, 0, -2.1048, -5.0813, 3.5, -2.1048, -3.8890998, 0, -3.8890998, -5.5, 3.5, 0, -5.0813, 3.5, -2.1048, -5.0813, 0, -2.1048, -5.5, 0, 0, -5.5, 3.5, 0, -5.0813, 0, -2.1048, -5.0813, 3.5, 2.1048, -5.5, 3.5, 0, -5.5, 0, 0, -5.0813, 0, 2.1048, -5.0813, 3.5, 2.1048, -5.5, 0, 0, -3.8890998, 3.5, 3.8890998, -5.0813, 3.5, 2.1048, -5.0813, 0, 2.1048, -3.8890998, 0, 3.8890998, -3.8890998, 3.5, 3.8890998, -5.0813, 0, 2.1048, -2.1048, 3.5, 5.0813, -3.8890998, 3.5, 3.8890998, -3.8890998, 0, 3.8890998, -2.1048, 0, 5.0813, -2.1048, 3.5, 5.0813, -3.8890998, 0, 3.8890998, 0, 3.5, 5.5, -2.1048, 3.5, 5.0813, -2.1048, 0, 5.0813, 0, 0, 5.5, 0, 3.5, 5.5, -2.1048, 0, 5.0813, 2.1048, 0, 5.0813, 0, 0, 5.5, 0, -3.5, 5.5, 2.1048, -3.5, 5.0813, 2.1048, 0, 5.0813, 0, -3.5, 5.5, 3.8890998, 0, 3.8890998, 2.1048, 0, 5.0813, 2.1048, -3.5, 5.0813, 3.8890998, -3.5, 3.8890998, 3.8890998, 0, 3.8890998, 2.1048, -3.5, 5.0813, 5.0813, 0, 2.1048, 3.8890998, 0, 3.8890998, 3.8890998, -3.5, 3.8890998, 5.0813, -3.5, 2.1048, 5.0813, 0, 2.1048, 3.8890998, -3.5, 3.8890998, 5.5, 0, 0, 5.0813, 0, 2.1048, 5.0813, -3.5, 2.1048, 5.5, -3.5, 0, 5.5, 0, 0, 5.0813, -3.5, 2.1048, 5.0813, 0, -2.1048, 5.5, 0, 0, 5.5, -3.5, 0, 5.0813, -3.5, -2.1048, 5.0813, 0, -2.1048, 5.5, -3.5, 0, 3.8890998, 0, -3.8890998, 5.0813, 0, -2.1048, 5.0813, -3.5, -2.1048, 3.8890998, -3.5, -3.8890998, 3.8890998, 0, -3.8890998, 5.0813, -3.5, -2.1048, 2.1048, 0, -5.0813, 3.8890998, 0, -3.8890998, 3.8890998, -3.5, -3.8890998, 2.1048, -3.5, -5.0813, 2.1048, 0, -5.0813, 3.8890998, -3.5, -3.8890998, 0, 0, -5.5, 2.1048, 0, -5.0813, 2.1048, -3.5, -5.0813, 0, -3.5, -5.5, 0, 0, -5.5, 2.1048, -3.5, -5.0813, -2.1048, 0, -5.0813, 0, 0, -5.5, 0, -3.5, -5.5, -2.1048, -3.5, -5.0813, -2.1048, 0, -5.0813, 0, -3.5, -5.5, -3.8890998, 0, -3.8890998, -2.1048, 0, -5.0813, -2.1048, -3.5, -5.0813, -3.8890998, -3.5, -3.8890998, -3.8890998, 0, -3.8890998, -2.1048, -3.5, -5.0813, -5.0813, 0, -2.1048, -3.8890998, 0, -3.8890998, -3.8890998, -3.5, -3.8890998, -5.0813, -3.5, -2.1048, -5.0813, 0, -2.1048, -3.8890998, -3.5, -3.8890998, -5.5, 0, 0, -5.0813, 0, -2.1048, -5.0813, -3.5, -2.1048, -5.5, -3.5, 0, -5.5, 0, 0, -5.0813, -3.5, -2.1048, -5.0813, 0, 2.1048, -5.5, 0, 0, -5.5, -3.5, 0, -5.0813, -3.5, 2.1048, -5.0813, 0, 2.1048, -5.5, -3.5, 0, -3.8890998, 0, 3.8890998, -5.0813, 0, 2.1048, -5.0813, -3.5, 2.1048, -3.8890998, -3.5, 3.8890998, -3.8890998, 0, 3.8890998, -5.0813, -3.5, 2.1048, -2.1048, 0, 5.0813, -3.8890998, 0, 3.8890998, -3.8890998, -3.5, 3.8890998, -2.1048, -3.5, 5.0813, -2.1048, 0, 5.0813, -3.8890998, -3.5, 3.8890998, 0, 0, 5.5, -2.1048, 0, 5.0813, -2.1048, -3.5, 5.0813, 0, -3.5, 5.5, 0, 0, 5.5, -2.1048, -3.5, 5.0813)
@@ -91,7 +98,7 @@ environment = SubResource("Environment_5e1uj")
 metadata/ground = "snow"
 
 [node name="Mesh" type="MeshInstance3D" parent="Ocean"]
-transform = Transform3D(0.999985, -0.004064489, -0.0036769176, 0.0040745833, 0.99998796, 0.0027436886, 0.0036657325, -0.0027586191, 0.9999895, 0.5221286, -0.015899897, -0.39247143)
+transform = Transform3D(0.99998367, -0.0035545274, -0.0044668876, 0.0035676754, 0.9999895, 0.0029390273, 0.0044564083, -0.0029548912, 0.9999858, 0.97854185, -0.015907526, -0.1981355)
 material_override = ExtResource("1_q2uwy")
 mesh = SubResource("PlaneMesh_qetym")
 skeleton = NodePath("")
@@ -232,22 +239,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.420372, -2.8661346, 1.52587
 shape = SubResource("BoxShape3D_5k8xk")
 
 [node name="SwimTrigger" type="Area3D" parent="Sections/Section1"]
-transform = Transform3D(0.9486333, 0, -0.31637767, 0, 1, 0, 0.31637767, 0, 0.9486333, 17.294468, 1.0083218, -38.47194)
+transform = Transform3D(0.94863343, 0, -0.3163777, 0, 1, 0, 0.3163777, 0, 0.94863343, 17.294464, 1.0083218, -38.47193)
 script = ExtResource("9_5k8xk")
 
 [node name="Collision" type="CollisionShape3D" parent="Sections/Section1/SwimTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4117432, 0)
 shape = SubResource("BoxShape3D_m2hq8")
 
-[node name="SwimDestination" type="Node3D" parent="Sections"]
-transform = Transform3D(0.9486333, 0, -0.31637764, 0, 1, 0, 0.31637764, 0, 0.9486333, -26.838951, -6, 15.258357)
+[node name="SwimDestination" type="Node3D" parent="Sections/Section1"]
+transform = Transform3D(0.94863325, 0, -0.3163776, 0, 1, 0, 0.3163776, 0, 0.94863325, -23.15031, -6, 15.258358)
 
-[node name="Section2" type="Node3D" parent="Sections"]
+[node name="Section2" type="Node3D" parent="Sections" node_paths=PackedStringArray("item_node")]
+script = ExtResource("5_ikad4")
+item_node = NodePath("Item")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Sections/Section2"]
 transform = Transform3D(0.6811938, 0.7321031, -8.614815e-09, -0.5553241, 0.5167076, 0.65163517, 0.47706416, -0.44388986, 0.7585326, 47.998314, -20.530243, -9.763296)
 use_collision = true
 size = Vector3(20, 20, 61.64209)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Sections/Section2"]
+transform = Transform3D(-0.5530015, -0.8146575, 0.17470631, -0.373485, 0.4298185, 0.8220494, -0.74478084, 0.38934436, -0.54195255, 42.83964, -2.7130604, 43.489574)
+use_collision = true
+size = Vector3(20, 16.68164, 61.64209)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Sections/Section2"]
 transform = Transform3D(-0.7331766, 0.6102529, 0.30007234, 0.21998924, -0.20469157, 0.9537852, 0.64347255, 0.7653055, 0.015825836, 3.026245, -28.719158, 29.150995)
@@ -259,13 +273,30 @@ transform = Transform3D(-0.93310225, 0.18054661, -0.31100368, -0.0016975733, 0.8
 use_collision = true
 size = Vector3(20, 20, 52.01465)
 
+[node name="CSGBox3D5" type="CSGBox3D" parent="Sections/Section2"]
+transform = Transform3D(-0.72242624, 0.68675107, 0.08045622, 0.056204766, -0.057650268, 0.9967536, 0.68916005, 0.72460294, 0.0030492842, 105.793015, 3.0028305, 10.221325)
+use_collision = true
+size = Vector3(20, 20, 52.01465)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Sections/Section2"]
+transform = Transform3D(-0.07061313, 0.06296973, 0.99551433, -0.12764826, -0.99037075, 0.053590298, 0.9893029, -0.12329146, 0.077971265, 165.5636, -2.1846623, 37.938137)
+use_collision = true
+size = Vector3(18.631104, 9.5703125, 63.406616)
+metadata/ground = "wood"
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Sections/Section2"]
+transform = Transform3D(-0.9704344, 0.11355368, -0.21298678, -0.17769834, -0.93329513, 0.312064, -0.16334341, 0.34068477, 0.9258797, 165.78441, 3.2125044, 25.76271)
+use_collision = true
+size = Vector3(15.233887, 2.963379, 60.506165)
+metadata/ground = "wood"
+
 [node name="CSGBox3D3" type="CSGBox3D" parent="Sections/Section2"]
 transform = Transform3D(0.98109126, 0.03668261, 0.19003668, -0.17486078, 0.5888896, 0.7890702, -0.0829655, -0.80738014, 0.584169, 75.40532, 2.2134104, -20.27266)
 use_collision = true
 size = Vector3(20, 20, 60.82715)
 
 [node name="Item" type="Area3D" parent="Sections/Section2"]
-transform = Transform3D(0.99586225, 0, -0.090875916, 0, 1, 0, 0.090875916, 0, 0.99586225, 205.74603, 1.3381969, 45.690514)
+transform = Transform3D(0.99586225, 0, -0.090875916, 0, 1, 0, 0.090875916, 0, 0.99586225, 186.76335, 5.7731657, 38.971478)
 script = ExtResource("6_i1fv3")
 
 [node name="Mesh" type="MeshInstance3D" parent="Sections/Section2/Item"]
@@ -344,16 +375,31 @@ light_energy = 7.75
 spot_range = 7.719363
 spot_angle = 48.226097
 
-[node name="RadarTerminal" type="MeshInstance3D" parent="LighthouseRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37690282, -2.640442, 0)
-mesh = SubResource("CylinderMesh_ikad4")
-
-[node name="InteractArea" type="Area3D" parent="LighthouseRoom/RadarTerminal"]
+[node name="RadarTerminal" type="Area3D" parent="LighthouseRoom/Light"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.37690282, 2.233337e-07, -5.109314)
 script = ExtResource("7_t871u")
 
-[node name="Collision" type="CollisionShape3D" parent="LighthouseRoom/RadarTerminal/InteractArea"]
+[node name="Collision" type="CollisionShape3D" parent="LighthouseRoom/Light/RadarTerminal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1661377, 0)
 shape = SubResource("CylinderShape3D_i1fv3")
+
+[node name="Mesh" type="MeshInstance3D" parent="LighthouseRoom/Light/RadarTerminal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5063506e-12)
+mesh = SubResource("CylinderMesh_ikad4")
+skeleton = NodePath("../../..")
+
+[node name="Beacon" type="Area3D" parent="LighthouseRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63892174, -1.3442383, 4.037608)
+script = ExtResource("14_qh5v2")
+
+[node name="Collision" type="CollisionShape3D" parent="LighthouseRoom/Beacon"]
+shape = SubResource("CylinderShape3D_351bi")
+
+[node name="Mesh" type="MeshInstance3D" parent="LighthouseRoom/Beacon"]
+mesh = SubResource("CapsuleMesh_es55r")
+
+[node name="FixSound" type="AudioStreamPlayer3D" parent="LighthouseRoom/Beacon"]
+stream = ExtResource("15_slrkl")
 
 [node name="Walls" type="StaticBody3D" parent="LighthouseRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7821655, 0)
@@ -391,7 +437,7 @@ shape = SubResource("BoxShape3D_e304g")
 
 [node name="Creature" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1.9998785, 0, 3.4641716, 0, 4, 0, -3.4641716, 0, 1.9998785, 25.333113, -5.231607, -68.69992)
+transform = Transform3D(1.9998785, 0, 3.4641716, 0, 4, 0, -3.4641716, 0, 1.9998785, 29.15069, -5.231607, -68.69992)
 visible = false
 material_override = ExtResource("15_kudqo")
 mesh = ExtResource("16_5k8xk")
@@ -456,8 +502,10 @@ text = "Resume"
 [connection signal="body_exited" from="LighthouseRoom/ExitLighthouseArea" to="LighthouseRoom/ExitLighthouseArea" method="_on_body_exited"]
 [connection signal="body_entered" from="LighthouseRoom/EnterLightRoomArea" to="LighthouseRoom/EnterLightRoomArea" method="_on_body_entered"]
 [connection signal="body_exited" from="LighthouseRoom/EnterLightRoomArea" to="LighthouseRoom/EnterLightRoomArea" method="_on_body_exited"]
-[connection signal="body_entered" from="LighthouseRoom/RadarTerminal/InteractArea" to="LighthouseRoom/RadarTerminal/InteractArea" method="_on_body_entered"]
-[connection signal="body_exited" from="LighthouseRoom/RadarTerminal/InteractArea" to="LighthouseRoom/RadarTerminal/InteractArea" method="_on_body_exited"]
+[connection signal="body_entered" from="LighthouseRoom/Light/RadarTerminal" to="LighthouseRoom/Light/RadarTerminal" method="_on_body_entered"]
+[connection signal="body_exited" from="LighthouseRoom/Light/RadarTerminal" to="LighthouseRoom/Light/RadarTerminal" method="_on_body_exited"]
+[connection signal="body_entered" from="LighthouseRoom/Beacon" to="LighthouseRoom/Beacon" method="_on_body_entered"]
+[connection signal="body_exited" from="LighthouseRoom/Beacon" to="LighthouseRoom/Beacon" method="_on_body_exited"]
 [connection signal="body_entered" from="LightRoom/ExitArea" to="LightRoom/ExitArea" method="_on_body_entered"]
 [connection signal="body_exited" from="LightRoom/ExitArea" to="LightRoom/ExitArea" method="_on_body_exited"]
 [connection signal="pressed" from="PauseMenu/Control/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
