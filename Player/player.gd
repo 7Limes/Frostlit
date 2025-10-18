@@ -42,18 +42,14 @@ enum ItemState {
 var item_state: ItemState = ItemState.NEXT
 
 
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	toggle_indoors(true)
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		mouse_motion = event.relative
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed('pause'):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-
-func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 # Tick functions

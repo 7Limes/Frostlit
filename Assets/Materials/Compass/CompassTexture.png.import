@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biis0yns4pbm7"
-path.s3tc="res://.godot/imported/compass.png-4c4ee183081afc7ed93df300a749a046.s3tc.ctex"
+uid="uid://dorbddh30t78v"
+path.s3tc="res://.godot/imported/CompassTexture.png-65312559e970516d58e2b810ecf4d8b9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Materials/Compass/compass.png"
-dest_files=["res://.godot/imported/compass.png-4c4ee183081afc7ed93df300a749a046.s3tc.ctex"]
+source_file="res://Assets/Materials/Compass/CompassTexture.png"
+dest_files=["res://.godot/imported/CompassTexture.png-65312559e970516d58e2b810ecf4d8b9.s3tc.ctex"]
 
 [params]
 

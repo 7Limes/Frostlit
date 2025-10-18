@@ -1,15 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=24 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_q2uwy"]
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="2_q2uwy"]
 [ext_resource type="ArrayMesh" uid="uid://do4uqx1m321p1" path="res://Assets/Models/lighthouse.obj" id="5_g86mt"]
-[ext_resource type="Script" uid="uid://2e23ufbfrlxt" path="res://Radar/section.gd" id="5_ikad4"]
+[ext_resource type="Script" uid="uid://2e23ufbfrlxt" path="res://Scripts/Radar/section.gd" id="5_ikad4"]
 [ext_resource type="Script" uid="uid://3m43tgnbe0a6" path="res://Scripts/Item/item.gd" id="6_i1fv3"]
 [ext_resource type="Script" uid="uid://dqiqxpxds8shn" path="res://Scripts/Lighthouse/teleport_area.gd" id="7_jvpjp"]
-[ext_resource type="Script" uid="uid://ctkrdogec66yk" path="res://Radar/radar.gd" id="7_t871u"]
+[ext_resource type="Script" uid="uid://ctkrdogec66yk" path="res://Scripts/Radar/radar.gd" id="7_t871u"]
 [ext_resource type="AudioStream" uid="uid://bsnwukbh1y8dl" path="res://Assets/Audio/Door/door-open.mp3" id="8_i1fv3"]
 [ext_resource type="Script" uid="uid://bjhuygaqnea2o" path="res://Scripts/General/fade_rect.gd" id="8_t871u"]
 [ext_resource type="AudioStream" uid="uid://bck3t1o7ld4wu" path="res://Assets/Audio/Door/door_close.mp3" id="9_pc8c5"]
+[ext_resource type="Script" uid="uid://bi3xulqxmf40o" path="res://Scripts/General/pause_menu.gd" id="12_14fha"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qetym"]
 
@@ -19,6 +20,7 @@ sky_material = SubResource("ProceduralSkyMaterial_qetym")
 [sub_resource type="Environment" id="Environment_5e1uj"]
 sky = SubResource("Sky_q2uwy")
 ambient_light_source = 3
+fog_enabled = true
 fog_light_color = Color(0.2106368, 0.23213801, 0.26559368, 1)
 fog_density = 0.1283
 
@@ -54,7 +56,7 @@ radius = 1.5
 
 [node name="Player" parent="." instance=ExtResource("2_q2uwy")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1541648, 2.7478411, -13.782367)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.1541648, 498.19812, -0.40399492)
 
 [node name="DoorOpenSound" type="AudioStreamPlayer3D" parent="Player"]
 stream = ExtResource("8_i1fv3")
@@ -269,6 +271,42 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0)
 script = ExtResource("8_t871u")
 
+[node name="PauseMenu" type="ColorRect" parent="."]
+process_mode = 3
+offset_right = 1152.0
+offset_bottom = 653.0
+color = Color(0, 0, 0, 0.11764706)
+script = ExtResource("12_14fha")
+
+[node name="Control" type="Control" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -34.54286
+offset_right = 78.0
+offset_bottom = 34.54286
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume"
+
 [connection signal="body_entered" from="Sections/Section1/Item" to="Sections/Section1/Item" method="_on_body_entered"]
 [connection signal="body_entered" from="Lighthouse/EnterLighthouseArea" to="Lighthouse/EnterLighthouseArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Lighthouse/EnterLighthouseArea" to="Lighthouse/EnterLighthouseArea" method="_on_body_exited"]
@@ -276,3 +314,4 @@ script = ExtResource("8_t871u")
 [connection signal="body_exited" from="LighthouseRoom/ExitLighthouseArea" to="LighthouseRoom/ExitLighthouseArea" method="_on_body_exited"]
 [connection signal="body_entered" from="LighthouseRoom/RadarTerminal/InteractArea" to="LighthouseRoom/RadarTerminal/InteractArea" method="_on_body_entered"]
 [connection signal="body_exited" from="LighthouseRoom/RadarTerminal/InteractArea" to="LighthouseRoom/RadarTerminal/InteractArea" method="_on_body_exited"]
+[connection signal="pressed" from="PauseMenu/Control/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
