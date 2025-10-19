@@ -42,4 +42,4 @@ func _on_toggle_speed_pressed() -> void:
 	if player.max_speed != 20:
 		player.max_speed = 20
 	else:
-		player.max_speed = 4
+		player.max_speed = 5

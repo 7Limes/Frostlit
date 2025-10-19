@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://dms36irs04u7e"]
 
-[ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_ekrfg"]
 [ext_resource type="Material" uid="uid://ka1ngl72m45s" path="res://Assets/Materials/SnowParticle/snow-particle.tres" id="1_q2qps"]
 [ext_resource type="ArrayMesh" uid="uid://do4uqx1m321p1" path="res://Assets/Models/lighthouse.obj" id="1_w31pl"]
 [ext_resource type="Script" uid="uid://bw4f1myuutjx5" path="res://Scripts/General/title.gd" id="1_yosvi"]
 [ext_resource type="AudioStream" uid="uid://dwiqpp2kuhmt3" path="res://Assets/Audio/wind.mp3" id="3_fp2oq"]
+[ext_resource type="Material" uid="uid://bsi8613jjbh0v" path="res://Assets/Materials/Ice/ice-new.tres" id="3_yosvi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ekrfg"]
 
@@ -23,7 +23,7 @@ material = ExtResource("1_q2qps")
 size = Vector2(0.1, 0.1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fp2oq"]
-size = Vector2(1000, 1000)
+size = Vector2(100, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2qps"]
 size = Vector3(1000, 1, 1000)
@@ -57,7 +57,7 @@ metadata/ground = "snow"
 
 [node name="Mesh" type="MeshInstance3D" parent="Ocean"]
 transform = Transform3D(0.99998367, -0.0035545274, -0.0044668876, 0.0035676754, 0.9999895, 0.0029390273, 0.0044564083, -0.0029548912, 0.9999858, 0.97854185, -0.015907526, -0.1981355)
-material_override = ExtResource("1_ekrfg")
+material_override = ExtResource("3_yosvi")
 mesh = SubResource("PlaneMesh_fp2oq")
 skeleton = NodePath("")
 
