@@ -12,3 +12,9 @@
 - Boom sounds: https://freesound.org/people/bareform/sounds/237558/
 - Beacon repair: https://freesound.org/people/dheming/sounds/197398/
 - Radar ping: https://freesound.org/people/DrMrSir/sounds/529559/
+
+## Models
+- Sail Boat: https://poly.pizza/m/BgSZXwmm7k
+
+## Textures
+- Rusted Metal: https://freepbr.com/product/rusty-metal-pbr/

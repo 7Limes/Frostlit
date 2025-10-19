@@ -74,6 +74,7 @@ material = ExtResource("29_efx54")
 size = Vector2(0.1, 0.1)
 
 [node name="Player" type="CharacterBody3D"]
+floor_stop_on_slope = false
 floor_max_angle = 1.0471976
 script = ExtResource("1_l8h54")
 footstep_interval = 0.6

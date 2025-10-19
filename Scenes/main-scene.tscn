@@ -1,18 +1,24 @@
-[gd_scene load_steps=43 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=50 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="1_reee1"]
 [ext_resource type="AudioStream" uid="uid://bsnwukbh1y8dl" path="res://Assets/Audio/Door/door-open.mp3" id="2_1kx5o"]
 [ext_resource type="AudioStream" uid="uid://bck3t1o7ld4wu" path="res://Assets/Audio/Door/door_close.mp3" id="3_jqwu2"]
 [ext_resource type="AudioStream" uid="uid://cscrh6v1wkg8o" path="res://Assets/Audio/ladder.mp3" id="4_023hc"]
+[ext_resource type="Material" uid="uid://cfeylmmh6clja" path="res://Assets/Materials/Ice/ice-new-big.tres" id="5_5trvw"]
 [ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="5_oo87p"]
+[ext_resource type="PackedScene" uid="uid://42vfcquouxmc" path="res://Assets/Models/BoatWSail.fbx" id="6_1kx5o"]
 [ext_resource type="Script" uid="uid://2e23ufbfrlxt" path="res://Scripts/Radar/section.gd" id="6_575dc"]
 [ext_resource type="Script" uid="uid://3m43tgnbe0a6" path="res://Scripts/Item/item.gd" id="7_5trvw"]
+[ext_resource type="Material" uid="uid://chsn7jtx7r1jm" path="res://Assets/Materials/RustyMetal/rusty-metal.tres" id="7_jqwu2"]
+[ext_resource type="Material" uid="uid://b8eminigl0qj1" path="res://Assets/Materials/Ice/ice-opaque.tres" id="7_oo87p"]
 [ext_resource type="AudioStream" uid="uid://bxycu2c54j3sy" path="res://Assets/Audio/Boom/boom-03.mp3" id="8_ikdcw"]
 [ext_resource type="Script" uid="uid://54b3fpdf1hxx" path="res://Scripts/ScriptedEvents/boom_1.gd" id="9_lercd"]
 [ext_resource type="Script" uid="uid://bmpdklpkp6q8f" path="res://Scripts/ScriptedEvents/swim_1.gd" id="10_wa5e3"]
 [ext_resource type="ArrayMesh" uid="uid://do4uqx1m321p1" path="res://Assets/Models/lighthouse.obj" id="11_ugwxa"]
 [ext_resource type="Script" uid="uid://dqiqxpxds8shn" path="res://Scripts/Lighthouse/teleport_area.gd" id="12_p5sj2"]
 [ext_resource type="PackedScene" uid="uid://be2mws23qy2ip" path="res://Assets/Models/Room.blend" id="13_5ihgu"]
+[ext_resource type="Material" uid="uid://la535p2ygxj" path="res://Assets/Materials/Wood/wood.tres" id="13_575dc"]
+[ext_resource type="Material" uid="uid://bsi8613jjbh0v" path="res://Assets/Materials/Ice/ice-new.tres" id="14_ikdcw"]
 [ext_resource type="Script" uid="uid://d1e5i4g6oy0wj" path="res://Scripts/Beacon/beacon.gd" id="14_rpa78"]
 [ext_resource type="AudioStream" uid="uid://b5i6y7i4vyo5v" path="res://Assets/Audio/fix.mp3" id="15_4f5p3"]
 [ext_resource type="PackedScene" uid="uid://clrnkgqkdray8" path="res://Assets/Models/basement.blend" id="16_8wqdv"]
@@ -51,6 +57,9 @@ size = Vector3(249.35492, 41.97934, 11.817871)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2hq8"]
 size = Vector3(84.16615, 25.667725, 6.189453)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1kx5o"]
+size = Vector3(0.4071045, 0.16656494, 0.8883667)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e304g"]
 size = Vector3(2.4065619, 3.6185398, 2.146753)
@@ -109,13 +118,13 @@ environment = SubResource("Environment_5e1uj")
 metadata/ground = "snow"
 
 [node name="Mesh" type="MeshInstance3D" parent="Ocean"]
-transform = Transform3D(0.99998367, -0.0035545274, -0.0044668876, 0.0035676754, 0.9999895, 0.0029390273, 0.0044564083, -0.0029548912, 0.9999858, 0.97854185, -0.015907526, -0.1981355)
-material_override = ExtResource("5_oo87p")
+transform = Transform3D(0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.97854185, -0.015907526, -0.1981355)
+material_override = ExtResource("5_5trvw")
 mesh = SubResource("PlaneMesh_qetym")
 skeleton = NodePath("")
 
 [node name="Collision" type="CollisionShape3D" parent="Ocean"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.62923765, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 shape = SubResource("BoxShape3D_q2uwy")
 
 [node name="Island" type="CSGSphere3D" parent="."]
@@ -136,90 +145,105 @@ item_node = NodePath("Item")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(1, 0, 0, 0, 0.82839286, 0.5601475, 0, -0.5601475, 0.82839286, 22.810595, 4.9237723, -22.023895)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 radius = 6.7094727
 height = 34.00856
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(0.85903645, 0.36015043, 0.3637966, -0.26998314, 0.92252946, -0.27576932, -0.43493155, 0.13867694, 0.889721, 35.185623, -10.728529, -47.41249)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 radius = 9.902344
 height = 66.04323
 
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(0.86094815, -0.22544771, 0.45600572, 0.26382297, 0.96433496, -0.021339372, -0.43493155, 0.13867691, 0.88972086, 131.75237, -10.728529, -145.21118)
+material_override = ExtResource("7_oo87p")
 use_collision = true
 radius = 9.902344
 height = 66.04323
 
 [node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(0.87745094, 0.2872218, 0.38416538, -0.20227234, 0.9477724, -0.24660403, -0.43493155, 0.13867691, 0.88972086, 98.44974, -10.728529, -179.35104)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 radius = 9.902344
 height = 66.04323
 
 [node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(0.47591308, -0.14937955, -0.8667135, 0.26382303, 0.9643351, -0.021339366, 0.8389898, -0.21850337, 0.4983493, -22.401457, -10.728529, -119.522194)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 radius = 9.902344
 height = 66.04323
 
 [node name="CSGCylinder3D15" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(-0.9457605, 0.25426707, -0.20220032, 0.26382303, 0.9643351, -0.02133938, 0.18956307, -0.073527016, -0.97911155, 100.42058, -10.728529, -72.08438)
+material_override = ExtResource("5_oo87p")
 use_collision = true
 radius = 9.902344
 height = 66.04323
 
 [node name="CSGCylinder3D12" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(0.47670835, -0.124675356, -0.8701753, -0.20227237, 0.9477725, -0.24660407, 0.85547346, 0.29357064, 0.4265925, 34.53176, -10.728529, -202.51903)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 radius = 9.902344
 height = 66.04323
 
 [node name="CSGCylinder3D13" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(-0.7337269, -0.5398785, -0.41252407, 0.40074757, 0.14642657, -0.90441185, 0.54867685, -0.8289095, 0.10891788, 121.71675, 2.1057396, -260.46503)
+material_override = ExtResource("7_jqwu2")
 use_collision = true
 radius = 9.902344
 height = 66.04323
 
 [node name="CSGCylinder3D14" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(-0.16673627, -0.90863717, 0.3828551, 0.4234122, -0.41664895, -0.8044412, 0.890461, 0.02797591, 0.4541984, 76.73215, 2.1057396, -276.21497)
+material_override = ExtResource("7_jqwu2")
 use_collision = true
 radius = 9.902344
 height = 66.04323
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(0.7472362, 0.6069358, 0.27067876, -0.50246656, 0.78255844, -0.36759996, -0.43493155, 0.13867694, 0.889721, 3.7358932, -15.839488, -86.26103)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 radius = 6.7094727
 height = 84.78519
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(-0.34579992, 0.3456025, -0.87234247, -0.5249699, -0.84183013, -0.12541409, -0.7777075, 0.4145853, 0.4725358, 47.96012, -13.767037, -60.426952)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 radius = 6.7094727
 height = 75.92044
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(0.27120408, 0.8994217, -0.34276676, -0.56711483, -0.13841861, -0.8119243, -0.7777076, 0.41458526, 0.47253576, 53.753265, -1.0615535, -121.37274)
+material_override = ExtResource("7_jqwu2")
 use_collision = true
 radius = 6.7094727
 height = 90.696304
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(0.8236261, -0.089849144, -0.5599708, -0.54942054, 0.11842786, -0.8271108, 0.14063136, 0.98888946, 0.04817527, 83.93995, -2.9320793, -195.9692)
+material_override = ExtResource("7_jqwu2")
 use_collision = true
 radius = 6.7094727
 height = 188.56421
 
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(-0.7778066, -0.56946796, 0.26593855, 0.10433763, 0.30026367, 0.9481328, -0.6197829, 0.7652111, -0.17413008, 58.7547, -1.2739139, -180.05673)
+material_override = ExtResource("7_jqwu2")
 use_collision = true
 radius = 6.7094727
 height = 123.75958
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(0.8816084, 0.3909861, 0.2643793, -0.47198153, 0.7303181, 0.49383077, 0, -0.5601475, 0.82839286, -8.720428, -9.554899, -38.330048)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 radius = 9.995117
 height = 67.6221
@@ -268,16 +292,19 @@ item_node = NodePath("Item")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Sections/Section2/Geometry"]
 transform = Transform3D(0.6811938, 0.7321031, -8.614815e-09, -0.5553241, 0.5167076, 0.65163517, 0.47706416, -0.44388986, 0.7585326, 47.998314, -20.530243, -9.763296)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 size = Vector3(20, 20, 61.64209)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Sections/Section2/Geometry"]
 transform = Transform3D(-0.5530015, -0.8146575, 0.17470631, -0.373485, 0.4298185, 0.8220494, -0.74478084, 0.38934436, -0.54195255, 42.83964, -2.7130604, 43.489574)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 size = Vector3(20, 16.68164, 61.64209)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Sections/Section2/Geometry"]
 transform = Transform3D(-0.7331766, 0.6102529, 0.30007234, 0.21998924, -0.20469157, 0.9537852, 0.64347255, 0.7653055, 0.015825836, 3.026245, -28.719158, 29.150995)
+material_override = ExtResource("7_jqwu2")
 use_collision = true
 size = Vector3(20, 20, 61.64209)
 
@@ -293,20 +320,33 @@ size = Vector3(20, 20, 52.01465)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Sections/Section2/Geometry"]
 transform = Transform3D(-0.07061313, 0.06296973, 0.99551433, -0.12764826, -0.99037075, 0.053590298, 0.9893029, -0.12329146, 0.077971265, 165.5636, -2.1846623, 37.938137)
+material_override = ExtResource("13_575dc")
 use_collision = true
 size = Vector3(18.631104, 9.5703125, 63.406616)
 metadata/ground = "wood"
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Sections/Section2/Geometry"]
 transform = Transform3D(-0.9704344, 0.11355368, -0.21298678, -0.17769834, -0.93329513, 0.312064, -0.16334341, 0.34068477, 0.9258797, 165.78441, 3.2125044, 25.76271)
+material_override = ExtResource("13_575dc")
 use_collision = true
 size = Vector3(15.233887, 2.963379, 60.506165)
 metadata/ground = "wood"
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Sections/Section2/Geometry"]
 transform = Transform3D(0.98109126, 0.03668261, 0.19003668, -0.17486078, 0.5888896, 0.7890702, -0.0829655, -0.80738014, 0.584169, 75.40532, 2.2134104, -20.27266)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 size = Vector3(20, 20, 60.82715)
+
+[node name="BoatWSail" parent="Sections/Section2/Geometry" instance=ExtResource("6_1kx5o")]
+transform = Transform3D(6.3922315, -0.84611607, -2.7246034, 0, 6.685068, -2.0760245, 2.8529596, 1.8957757, 6.1046433, 78.05919, -0.31442523, 5.247431)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sections/Section2/Geometry/BoatWSail"]
+metadata/ground = "wood"
+
+[node name="Collision" type="CollisionShape3D" parent="Sections/Section2/Geometry/BoatWSail/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010803223, 0.07296753, 0.0022888184)
+shape = SubResource("BoxShape3D_1kx5o")
 
 [node name="Item" type="Area3D" parent="Sections/Section2"]
 transform = Transform3D(0.99586225, 0, -0.090875916, 0, 1, 0, 0.090875916, 0, 0.99586225, 186.76335, 5.7731657, 38.971478)
@@ -317,6 +357,22 @@ mesh = SubResource("PrismMesh_jvpjp")
 skeleton = NodePath("../..")
 
 [node name="Collision" type="CollisionShape3D" parent="Sections/Section2/Item"]
+shape = SubResource("SphereShape3D_pc8c5")
+
+[node name="Section3" type="Node3D" parent="Sections"]
+script = ExtResource("6_575dc")
+
+[node name="Geometry" type="Node3D" parent="Sections/Section3"]
+
+[node name="Item" type="Area3D" parent="Sections/Section3"]
+transform = Transform3D(0.99586225, 0, -0.090875916, 0, 1, 0, 0.090875916, 0, 0.99586225, -179.43904, 1.8428578, 188.83957)
+script = ExtResource("7_5trvw")
+
+[node name="Mesh" type="MeshInstance3D" parent="Sections/Section3/Item"]
+mesh = SubResource("PrismMesh_jvpjp")
+skeleton = NodePath("../..")
+
+[node name="Collision" type="CollisionShape3D" parent="Sections/Section3/Item"]
 shape = SubResource("SphereShape3D_pc8c5")
 
 [node name="Lighthouse" type="MeshInstance3D" parent="."]
@@ -657,6 +713,7 @@ button_mask = 4
 [connection signal="body_entered" from="Sections/Section1/BoomTrigger" to="Sections/Section1/BoomTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="Sections/Section1/SwimTrigger" to="Sections/Section1/SwimTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="Sections/Section2/Item" to="Sections/Section2/Item" method="_on_body_entered"]
+[connection signal="body_entered" from="Sections/Section3/Item" to="Sections/Section3/Item" method="_on_body_entered"]
 [connection signal="body_entered" from="Lighthouse/EnterLighthouseArea" to="Lighthouse/EnterLighthouseArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Lighthouse/EnterLighthouseArea" to="Lighthouse/EnterLighthouseArea" method="_on_body_exited"]
 [connection signal="body_entered" from="LighthouseRoom/ExitLighthouseArea" to="LighthouseRoom/ExitLighthouseArea" method="_on_body_entered"]
