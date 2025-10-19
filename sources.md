@@ -16,9 +16,10 @@
 
 ## Models
 - Sail Boat: https://poly.pizza/m/BgSZXwmm7k
-
-## Textures
-- Rusted Metal: https://freepbr.com/product/rusty-metal-pbr/
+- Table: Table by CreativeTrio (https://poly.pizza/m/KndwzSWSHR)
 - Submarine: Submarine by Poly by Google [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/dfSQmeuuYt3)
 - Crate: Crate by Quaternius (https://poly.pizza/m/3OEFd1AWfa)
 - Stove: Pot Belly Stove by Don Carson [CC-BY] (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza (https://poly.pizza/m/4Zpt6uhxBAC)
+
+## Textures
+- Rusted Metal: https://freepbr.com/product/rusty-metal-pbr/
