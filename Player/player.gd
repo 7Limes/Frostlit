@@ -15,6 +15,8 @@ extends CharacterBody3D
 @onready var snow_particles = $SnowParticles
 @onready var environment: WorldEnvironment = $"../Environment"
 @onready var fade_rect = %FadeRect
+@onready var sections = %Sections
+@onready var rooms = %Rooms
 
 const DEFAULT_GROUND_TYPE = "stone"
 
@@ -177,6 +179,8 @@ func toggle_can_interact(toggle_on: bool):
 
 func toggle_indoors(indoors: bool):
 	snow_particles.visible = not indoors
+	sections.visible = not indoors
+	rooms.visible = indoors
 	
 	# Handle wind audio
 	var lowpass_effect = AudioServer.get_bus_effect(ambience_bus_index, 0)
