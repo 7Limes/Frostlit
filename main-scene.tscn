@@ -87,7 +87,8 @@ size = Vector3(1, 1.824707, 3.9188232)
 
 [node name="Player" parent="." instance=ExtResource("2_q2uwy")]
 unique_name_in_owner = true
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.1541648, 498.19812, -0.40399492)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 498.198, 0)
+floor_max_angle = 0.87266463
 max_speed = 4.0
 gravity = 10.0
 
@@ -503,15 +504,15 @@ light_color = Color(0.36078432, 1, 0.20392157, 1)
 light_energy = 0.75
 omni_range = 1.7988635
 
-[node name="GreenLight2" type="OmniLight3D" parent="BasementRoom/RadarTerminal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40284252, 0.16021729, -1.2196681)
-light_color = Color(0.36078432, 1, 0.20392157, 1)
-light_energy = 0.75
-omni_range = 1.7988635
-
 [node name="RedLight" type="OmniLight3D" parent="BasementRoom/RadarTerminal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29661655, 0.42630005, 0.82061446)
 light_color = Color(1, 0.13725491, 0.12156863, 1)
+light_energy = 0.75
+omni_range = 1.7988635
+
+[node name="RadarLight" type="OmniLight3D" parent="BasementRoom/RadarTerminal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40284252, 0.16021729, -1.2196681)
+light_color = Color(0.36078432, 1, 0.20392157, 1)
 light_energy = 0.75
 omni_range = 1.7988635
 
