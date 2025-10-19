@@ -4,7 +4,7 @@ extends Node3D
 @onready var wind_sound = $WindSound
 @onready var light = $Light
 
-const LIGHT_ROTATE_SPEED = 3
+const LIGHT_ROTATE_SPEED = 2
 
 func _on_play_button_pressed() -> void:
 	var fade_tweener = create_tween()

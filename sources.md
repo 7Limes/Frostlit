@@ -14,6 +14,7 @@
 - Radar ping: https://freesound.org/people/DrMrSir/sounds/529559/
 - Fireplace: https://freesound.org/people/silencyo/sounds/81800/
 - Ice break: https://freesound.org/people/deleted_user_3656686/sounds/418194/
+- Pickup: https://freesound.org/people/ajanhallinta/sounds/650943/
 
 ## Models
 - Sail Boat: https://poly.pizza/m/BgSZXwmm7k

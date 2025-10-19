@@ -26,6 +26,8 @@ const DEFAULT_GROUND_TYPE = "stone"
 	"wood": $SFX/WoodFootstepSounds
 }
 @onready var wind_sound = $SFX/WindSound
+@onready var pickup_sound = $SFX/PickupSound  # Used by item.gd
+@onready var jumpscare_sound = $SFX/JumpscareSound  # Used by jumpscare.gd
 
 @onready var ambience_bus_index = AudioServer.get_bus_index("Ambience")
 @onready var indoors_bus_index = AudioServer.get_bus_index("Indoors")

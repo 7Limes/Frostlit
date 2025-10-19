@@ -10,6 +10,7 @@ func _on_body_entered(body: Node3D) -> void:
 		visible = false
 		set_deferred('monitoring', false)
 		
+		body.pickup_sound.play()
 		body.update_compass_target(Vector2.ZERO)
 		body.update_actionbar("Return to the lighthouse to use the repair part.")
 		await get_tree().create_timer(5.0).timeout

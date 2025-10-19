@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://1a0i72xpxodg"]
+[gd_scene load_steps=39 format=3 uid="uid://1a0i72xpxodg"]
 
 [ext_resource type="Script" uid="uid://ddkj7s8uxjlyb" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://dip62y0y7af11" path="res://Compass/compass.tscn" id="2_4ntmi"]
@@ -30,6 +30,8 @@
 [ext_resource type="AudioStream" uid="uid://kr0s3wea1h8a" path="res://Assets/Audio/WoodFootsteps/woodstep-09.mp3" id="28_jp1hh"]
 [ext_resource type="AudioStream" uid="uid://dwiqpp2kuhmt3" path="res://Assets/Audio/wind.mp3" id="29_bbimk"]
 [ext_resource type="Material" uid="uid://ka1ngl72m45s" path="res://Assets/Materials/SnowParticle/snow-particle.tres" id="29_efx54"]
+[ext_resource type="AudioStream" uid="uid://imfl7hr680wq" path="res://Assets/Audio/pickup.mp3" id="29_m0h3t"]
+[ext_resource type="AudioStream" uid="uid://eeg7ev6y1oe4" path="res://Assets/Audio/jumpscare.mp3" id="30_i4o1l"]
 [ext_resource type="Script" uid="uid://dto5xu1sp356w" path="res://Scripts/Audio/random_audio_start.gd" id="30_m0h3t"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4ntmi"]
@@ -107,6 +109,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360124, 0)
 stream = SubResource("AudioStreamRandomizer_qs4pp")
 volume_db = -31.376
 bus = &"Indoors"
+
+[node name="PickupSound" type="AudioStreamPlayer3D" parent="SFX"]
+stream = ExtResource("29_m0h3t")
+
+[node name="JumpscareSound" type="AudioStreamPlayer3D" parent="SFX"]
+stream = ExtResource("30_i4o1l")
 
 [node name="WindSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("29_bbimk")

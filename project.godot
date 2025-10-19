@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="DevlupFall2025Jam"
+config/name="Frostlit"
 run/main_scene="uid://dms36irs04u7e"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
@@ -53,3 +53,7 @@ interact={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+
+[rendering]
+
+scaling_3d/scale=0.4
