@@ -92,7 +92,6 @@ stream = ExtResource("3_fp2oq")
 autoplay = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

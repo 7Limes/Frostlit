@@ -867,7 +867,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.307312, 0)
 metadata/ground = "wood"
 
 [node name="Mesh" parent="Rooms/LighthouseRoom" instance=ExtResource("13_5ihgu")]
-transform = Transform3D(-5.4990277, 0, -4.8074025e-07, 0, 5.4990277, 0, 4.8074025e-07, 0, -5.4990277, 0.002023697, -2.3066711, 0.0042607784)
+transform = Transform3D(-5.4990277, 0, -4.8074025e-07, 0, 5.4990277, 0, 4.8074025e-07, 0, -5.4990277, 0.0028603077, -2.3084412, 0.0031427145)
 
 [node name="EnterPoint" type="Node3D" parent="Rooms/LighthouseRoom"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.295483, -1.4455566, 0)
@@ -1097,24 +1097,6 @@ so in the event of an apocalypse, remember to
 not be here.
 
 Enjoy your stay!"
-
-[node name="Crate" type="StaticBody3D" parent="Rooms/LighthouseRoom"]
-transform = Transform3D(5.7193947, 0, 5.5936146, 0, 8, 0, -5.5936146, 0, 5.7193947, -4.105312, -2.2704775, 2.3361063)
-
-[node name="Mesh" parent="Rooms/LighthouseRoom/Crate" instance=ExtResource("10_ikdcw")]
-
-[node name="Collision" type="CollisionShape3D" parent="Rooms/LighthouseRoom/Crate"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00039672852, 0.07397461, 0.00061035156)
-shape = SubResource("BoxShape3D_lercd")
-
-[node name="Crate2" type="StaticBody3D" parent="Rooms/LighthouseRoom"]
-transform = Transform3D(0.80720043, 0, 7.9591727, 0, 8, 0, -7.9591727, 0, 0.80720043, -4.02291, -0.8013613, 2.2548766)
-
-[node name="Mesh" parent="Rooms/LighthouseRoom/Crate2" instance=ExtResource("10_ikdcw")]
-
-[node name="Collision" type="CollisionShape3D" parent="Rooms/LighthouseRoom/Crate2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00039672852, 0.07397461, 0.00061035156)
-shape = SubResource("BoxShape3D_lercd")
 
 [node name="BeaconRoom" type="Node3D" parent="Rooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.14563, 0)
