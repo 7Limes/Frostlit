@@ -109,7 +109,7 @@ bus = &"Indoors"
 
 [node name="WindSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("29_bbimk")
-volume_db = -10.0
+volume_db = -80.0
 autoplay = true
 parameters/looping = true
 script = ExtResource("30_m0h3t")

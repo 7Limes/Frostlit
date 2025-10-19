@@ -14,6 +14,7 @@ extends CharacterBody3D
 @onready var actionbar = %Actionbar
 @onready var snow_particles = $SnowParticles
 @onready var environment: WorldEnvironment = $"../Environment"
+@onready var fade_rect = %FadeRect
 
 const DEFAULT_GROUND_TYPE = "stone"
 
@@ -50,6 +51,8 @@ var item_state: ItemState = ItemState.NEXT
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	toggle_indoors(true)
+	fade_rect.color.a = 1.0
+	fade_rect.do_fade(false, func(): pass)
 
 
 func _unhandled_input(event: InputEvent) -> void:
