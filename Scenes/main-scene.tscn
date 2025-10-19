@@ -53,7 +53,7 @@ size = Vector3(249.35492, 41.97934, 11.817871)
 size = Vector3(84.16615, 25.667725, 6.189453)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e304g"]
-size = Vector3(2.4065619, 3.6185398, 1.8198733)
+size = Vector3(2.4065619, 3.6185398, 2.146753)
 
 [sub_resource type="BoxMesh" id="BoxMesh_es55r"]
 
@@ -387,7 +387,7 @@ mesh = SubResource("BoxMesh_es55r")
 skeleton = NodePath("../Collision")
 
 [node name="Collision" type="CollisionShape3D" parent="LighthouseRoom/EnterBasement"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1505661, 0.31399536, -0.0062556267)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1505661, 0.31399536, -0.16969538)
 shape = SubResource("BoxShape3D_e304g")
 
 [node name="BasementReturn" type="Node3D" parent="LighthouseRoom"]

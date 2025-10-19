@@ -75,7 +75,7 @@ light_color = Color(0.91, 0.89544004, 0.8008, 1)
 light_energy = 5.0
 omni_range = 14.317731
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="WindSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_fp2oq")
 autoplay = true
 
@@ -110,5 +110,14 @@ text = "Begin"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.4
+
+[node name="FadeRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
 
 [connection signal="pressed" from="HBoxContainer/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
