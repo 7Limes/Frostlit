@@ -1,27 +1,27 @@
 [gd_scene load_steps=43 format=3 uid="uid://cnivq5x3pn6cr"]
 
-[ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_q2uwy"]
-[ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="2_q2uwy"]
-[ext_resource type="AudioStream" uid="uid://cscrh6v1wkg8o" path="res://Assets/Audio/ladder.mp3" id="4_slrkl"]
-[ext_resource type="ArrayMesh" uid="uid://do4uqx1m321p1" path="res://Assets/Models/lighthouse.obj" id="5_g86mt"]
-[ext_resource type="Script" uid="uid://2e23ufbfrlxt" path="res://Scripts/Radar/section.gd" id="5_ikad4"]
-[ext_resource type="Script" uid="uid://3m43tgnbe0a6" path="res://Scripts/Item/item.gd" id="6_i1fv3"]
-[ext_resource type="Script" uid="uid://dqiqxpxds8shn" path="res://Scripts/Lighthouse/teleport_area.gd" id="7_jvpjp"]
-[ext_resource type="AudioStream" uid="uid://bxycu2c54j3sy" path="res://Assets/Audio/Boom/boom-03.mp3" id="7_p0wft"]
-[ext_resource type="Script" uid="uid://ctkrdogec66yk" path="res://Scripts/Radar/radar.gd" id="7_t871u"]
-[ext_resource type="AudioStream" uid="uid://bsnwukbh1y8dl" path="res://Assets/Audio/Door/door-open.mp3" id="8_i1fv3"]
-[ext_resource type="Script" uid="uid://54b3fpdf1hxx" path="res://Scripts/ScriptedEvents/boom_1.gd" id="8_r7pl7"]
-[ext_resource type="Script" uid="uid://bjhuygaqnea2o" path="res://Scripts/General/fade_rect.gd" id="8_t871u"]
-[ext_resource type="Script" uid="uid://bmpdklpkp6q8f" path="res://Scripts/ScriptedEvents/swim_1.gd" id="9_5k8xk"]
-[ext_resource type="PackedScene" uid="uid://be2mws23qy2ip" path="res://Assets/Models/Room.blend" id="9_libv1"]
-[ext_resource type="AudioStream" uid="uid://bck3t1o7ld4wu" path="res://Assets/Audio/Door/door_close.mp3" id="9_pc8c5"]
-[ext_resource type="Script" uid="uid://bi3xulqxmf40o" path="res://Scripts/General/pause_menu.gd" id="12_14fha"]
-[ext_resource type="Script" uid="uid://d1e5i4g6oy0wj" path="res://Scripts/Beacon/beacon.gd" id="14_qh5v2"]
-[ext_resource type="AudioStream" uid="uid://cktltx754rtnq" path="res://Assets/Audio/radar-ping.mp3" id="15_351bi"]
-[ext_resource type="Material" uid="uid://ckhv8g8ayig40" path="res://Assets/Materials/Basic/black.tres" id="15_kudqo"]
-[ext_resource type="AudioStream" uid="uid://b5i6y7i4vyo5v" path="res://Assets/Audio/fix.mp3" id="15_slrkl"]
-[ext_resource type="ArrayMesh" uid="uid://dejosbsv1h0x3" path="res://Assets/Models/creature.obj" id="16_5k8xk"]
-[ext_resource type="PackedScene" uid="uid://clrnkgqkdray8" path="res://Assets/Models/basement.blend" id="16_es55r"]
+[ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="1_reee1"]
+[ext_resource type="AudioStream" uid="uid://bsnwukbh1y8dl" path="res://Assets/Audio/Door/door-open.mp3" id="2_1kx5o"]
+[ext_resource type="AudioStream" uid="uid://bck3t1o7ld4wu" path="res://Assets/Audio/Door/door_close.mp3" id="3_jqwu2"]
+[ext_resource type="AudioStream" uid="uid://cscrh6v1wkg8o" path="res://Assets/Audio/ladder.mp3" id="4_023hc"]
+[ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="5_oo87p"]
+[ext_resource type="Script" uid="uid://2e23ufbfrlxt" path="res://Scripts/Radar/section.gd" id="6_575dc"]
+[ext_resource type="Script" uid="uid://3m43tgnbe0a6" path="res://Scripts/Item/item.gd" id="7_5trvw"]
+[ext_resource type="AudioStream" uid="uid://bxycu2c54j3sy" path="res://Assets/Audio/Boom/boom-03.mp3" id="8_ikdcw"]
+[ext_resource type="Script" uid="uid://54b3fpdf1hxx" path="res://Scripts/ScriptedEvents/boom_1.gd" id="9_lercd"]
+[ext_resource type="Script" uid="uid://bmpdklpkp6q8f" path="res://Scripts/ScriptedEvents/swim_1.gd" id="10_wa5e3"]
+[ext_resource type="ArrayMesh" uid="uid://do4uqx1m321p1" path="res://Assets/Models/lighthouse.obj" id="11_ugwxa"]
+[ext_resource type="Script" uid="uid://dqiqxpxds8shn" path="res://Scripts/Lighthouse/teleport_area.gd" id="12_p5sj2"]
+[ext_resource type="PackedScene" uid="uid://be2mws23qy2ip" path="res://Assets/Models/Room.blend" id="13_5ihgu"]
+[ext_resource type="Script" uid="uid://d1e5i4g6oy0wj" path="res://Scripts/Beacon/beacon.gd" id="14_rpa78"]
+[ext_resource type="AudioStream" uid="uid://b5i6y7i4vyo5v" path="res://Assets/Audio/fix.mp3" id="15_4f5p3"]
+[ext_resource type="PackedScene" uid="uid://clrnkgqkdray8" path="res://Assets/Models/basement.blend" id="16_8wqdv"]
+[ext_resource type="Script" uid="uid://ctkrdogec66yk" path="res://Scripts/Radar/radar.gd" id="17_uwmks"]
+[ext_resource type="AudioStream" uid="uid://cktltx754rtnq" path="res://Assets/Audio/radar-ping.mp3" id="18_7qot2"]
+[ext_resource type="Material" uid="uid://ckhv8g8ayig40" path="res://Assets/Materials/Basic/black.tres" id="19_i22h4"]
+[ext_resource type="ArrayMesh" uid="uid://dejosbsv1h0x3" path="res://Assets/Models/creature.obj" id="20_2vgnc"]
+[ext_resource type="Script" uid="uid://bjhuygaqnea2o" path="res://Scripts/General/fade_rect.gd" id="21_wognk"]
+[ext_resource type="Script" uid="uid://bi3xulqxmf40o" path="res://Scripts/General/pause_menu.gd" id="22_6q6s1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qetym"]
 
@@ -85,7 +85,7 @@ size = Vector3(1, 1.824707, 3.9188232)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("2_q2uwy")]
+[node name="Player" parent="." instance=ExtResource("1_reee1")]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 498.198, 0)
 floor_max_angle = 0.87266463
@@ -93,13 +93,13 @@ max_speed = 4.0
 gravity = 10.0
 
 [node name="DoorOpenSound" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource("8_i1fv3")
+stream = ExtResource("2_1kx5o")
 
 [node name="DoorCloseSound" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource("9_pc8c5")
+stream = ExtResource("3_jqwu2")
 
 [node name="LadderSound" type="AudioStreamPlayer3D" parent="Player"]
-stream = ExtResource("4_slrkl")
+stream = ExtResource("4_023hc")
 
 [node name="Environment" type="WorldEnvironment" parent="."]
 unique_name_in_owner = true
@@ -110,7 +110,7 @@ metadata/ground = "snow"
 
 [node name="Mesh" type="MeshInstance3D" parent="Ocean"]
 transform = Transform3D(0.99998367, -0.0035545274, -0.0044668876, 0.0035676754, 0.9999895, 0.0029390273, 0.0044564083, -0.0029548912, 0.9999858, 0.97854185, -0.015907526, -0.1981355)
-material_override = ExtResource("1_q2uwy")
+material_override = ExtResource("5_oo87p")
 mesh = SubResource("PlaneMesh_qetym")
 skeleton = NodePath("")
 
@@ -129,7 +129,7 @@ rings = 8
 unique_name_in_owner = true
 
 [node name="Section1" type="Node3D" parent="Sections" node_paths=PackedStringArray("item_node")]
-script = ExtResource("5_ikad4")
+script = ExtResource("6_575dc")
 item_node = NodePath("Item")
 
 [node name="Geometry" type="Node3D" parent="Sections/Section1"]
@@ -226,7 +226,7 @@ height = 67.6221
 
 [node name="Item" type="Area3D" parent="Sections/Section1"]
 transform = Transform3D(0.99586225, 0, -0.090875916, 0, 1, 0, 0.090875916, 0, 0.99586225, 96.022964, 1.3381969, -250.88284)
-script = ExtResource("6_i1fv3")
+script = ExtResource("7_5trvw")
 
 [node name="Mesh" type="MeshInstance3D" parent="Sections/Section1/Item"]
 mesh = SubResource("PrismMesh_jvpjp")
@@ -237,13 +237,13 @@ shape = SubResource("SphereShape3D_pc8c5")
 
 [node name="BoomSound" type="AudioStreamPlayer3D" parent="Sections/Section1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.41484, 0, -98.37521)
-stream = ExtResource("7_p0wft")
+stream = ExtResource("8_ikdcw")
 volume_db = 2.0
 unit_size = 85.66
 
 [node name="BoomTrigger" type="Area3D" parent="Sections/Section1"]
 transform = Transform3D(0.8754561, 0, -0.48329765, 0, 1, 0, 0.48329765, 0, 0.8754561, 52.477547, 15.037771, -164.7663)
-script = ExtResource("8_r7pl7")
+script = ExtResource("9_lercd")
 
 [node name="Collision" type="CollisionShape3D" parent="Sections/Section1/BoomTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.420372, -2.8661346, 1.5258789e-05)
@@ -251,7 +251,7 @@ shape = SubResource("BoxShape3D_5k8xk")
 
 [node name="SwimTrigger" type="Area3D" parent="Sections/Section1"]
 transform = Transform3D(0.94863343, 0, -0.3163777, 0, 1, 0, 0.3163777, 0, 0.94863343, 17.294464, 1.0083218, -38.47193)
-script = ExtResource("9_5k8xk")
+script = ExtResource("10_wa5e3")
 
 [node name="Collision" type="CollisionShape3D" parent="Sections/Section1/SwimTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4117432, 0)
@@ -261,7 +261,7 @@ shape = SubResource("BoxShape3D_m2hq8")
 transform = Transform3D(0.94863325, 0, -0.3163776, 0, 1, 0, 0.3163776, 0, 0.94863325, -23.15031, -6, 15.258358)
 
 [node name="Section2" type="Node3D" parent="Sections" node_paths=PackedStringArray("item_node")]
-script = ExtResource("5_ikad4")
+script = ExtResource("6_575dc")
 item_node = NodePath("Item")
 
 [node name="Geometry" type="Node3D" parent="Sections/Section2"]
@@ -310,7 +310,7 @@ size = Vector3(20, 20, 60.82715)
 
 [node name="Item" type="Area3D" parent="Sections/Section2"]
 transform = Transform3D(0.99586225, 0, -0.090875916, 0, 1, 0, 0.090875916, 0, 0.99586225, 186.76335, 5.7731657, 38.971478)
-script = ExtResource("6_i1fv3")
+script = ExtResource("7_5trvw")
 
 [node name="Mesh" type="MeshInstance3D" parent="Sections/Section2/Item"]
 mesh = SubResource("PrismMesh_jvpjp")
@@ -321,11 +321,11 @@ shape = SubResource("SphereShape3D_pc8c5")
 
 [node name="Lighthouse" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4831586, 0)
-mesh = ExtResource("5_g86mt")
+mesh = ExtResource("11_ugwxa")
 
 [node name="EnterLighthouseArea" type="Area3D" parent="Lighthouse" node_paths=PackedStringArray("destination", "interact_sfx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.9892716)
-script = ExtResource("7_jvpjp")
+script = ExtResource("12_p5sj2")
 destination = NodePath("../../LighthouseRoom/EnterPoint")
 actionbar_prompt = "Press E to enter"
 interact_sfx = NodePath("../../Player/DoorOpenSound")
@@ -341,7 +341,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06247878, 0.76714563, -4.3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 500, 0)
 metadata/ground = "wood"
 
-[node name="Mesh" parent="LighthouseRoom" instance=ExtResource("9_libv1")]
+[node name="Mesh" parent="LighthouseRoom" instance=ExtResource("13_5ihgu")]
 transform = Transform3D(-5.4990277, 0, -4.8074025e-07, 0, 5.4990277, 0, 4.8074025e-07, 0, -5.4990277, 0, -2.2999878, 0)
 
 [node name="EnterPoint" type="Node3D" parent="LighthouseRoom"]
@@ -349,7 +349,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.2
 
 [node name="ExitLighthouseArea" type="Area3D" parent="LighthouseRoom" node_paths=PackedStringArray("destination", "arrive_sfx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.798131, -1.1789856, -0.022398472)
-script = ExtResource("7_jvpjp")
+script = ExtResource("12_p5sj2")
 destination = NodePath("../../Lighthouse/ExitPoint")
 actionbar_prompt = "Press E to exit"
 arrive_sfx = NodePath("../../Player/DoorCloseSound")
@@ -364,7 +364,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.93
 
 [node name="EnterBeaconRoom" type="Area3D" parent="LighthouseRoom" node_paths=PackedStringArray("destination", "interact_sfx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5594485, -1.1789856, -4.8308067)
-script = ExtResource("7_jvpjp")
+script = ExtResource("12_p5sj2")
 destination = NodePath("../../BeaconRoom/EnterPoint")
 actionbar_prompt = "Press E to go up"
 interact_sfx = NodePath("../../Player/LadderSound")
@@ -376,7 +376,7 @@ shape = SubResource("BoxShape3D_e304g")
 
 [node name="EnterBasement" type="Area3D" parent="LighthouseRoom" node_paths=PackedStringArray("destination", "interact_sfx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5594485, -1.1789856, 5.45192)
-script = ExtResource("7_jvpjp")
+script = ExtResource("12_p5sj2")
 destination = NodePath("../../BasementRoom/EnterPoint")
 actionbar_prompt = "Press E to go down"
 interact_sfx = NodePath("../../Player/LadderSound")
@@ -423,7 +423,7 @@ metadata/ground = "wood"
 shape = SubResource("BoxShape3D_kudqo")
 
 [node name="BeaconRoom" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 527.8584, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 509.74268, 0)
 use_collision = true
 radius = 7.8793945
 height = 1.0
@@ -434,7 +434,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.6
 
 [node name="ExitArea" type="Area3D" parent="BeaconRoom" node_paths=PackedStringArray("destination", "interact_sfx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.798131, 0.73651123, -0.022398472)
-script = ExtResource("7_jvpjp")
+script = ExtResource("12_p5sj2")
 destination = NodePath("../../LighthouseRoom/BeaconReturn")
 actionbar_prompt = "Press E to go down"
 interact_sfx = NodePath("../../Player/LadderSound")
@@ -448,7 +448,7 @@ mesh = SubResource("BoxMesh_351bi")
 
 [node name="Beacon" type="Area3D" parent="BeaconRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4649658, 0)
-script = ExtResource("14_qh5v2")
+script = ExtResource("14_rpa78")
 
 [node name="Collision" type="CollisionShape3D" parent="BeaconRoom/Beacon"]
 shape = SubResource("CylinderShape3D_351bi")
@@ -457,12 +457,12 @@ shape = SubResource("CylinderShape3D_351bi")
 mesh = SubResource("CapsuleMesh_es55r")
 
 [node name="FixSound" type="AudioStreamPlayer3D" parent="BeaconRoom/Beacon"]
-stream = ExtResource("15_slrkl")
+stream = ExtResource("15_4f5p3")
 
 [node name="BasementRoom" type="Node3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 487.79596, 0)
 
-[node name="Mesh" parent="BasementRoom" instance=ExtResource("16_es55r")]
+[node name="Mesh" parent="BasementRoom" instance=ExtResource("16_8wqdv")]
 transform = Transform3D(5.5, 0, -1.9539925e-14, 0, 5.5, 0, 1.9539925e-14, 0, 5.5, 0, 0, 0)
 
 [node name="EnterPoint" type="Node3D" parent="BasementRoom"]
@@ -477,20 +477,21 @@ shape = SubResource("ConcavePolygonShape3D_r7pl7")
 
 [node name="Floor" type="StaticBody3D" parent="BasementRoom"]
 transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, -0.49990845, 0)
-metadata/ground = "wood"
+metadata/ground = "stone"
 
 [node name="Collision" type="CollisionShape3D" parent="BasementRoom/Floor"]
 shape = SubResource("BoxShape3D_kudqo")
 
 [node name="RadarTerminal" type="Area3D" parent="BasementRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8961792, 1.3976135, 1.8678385e-07)
-script = ExtResource("7_t871u")
+script = ExtResource("17_uwmks")
 
 [node name="Collision" type="CollisionShape3D" parent="BasementRoom/RadarTerminal"]
 shape = SubResource("BoxShape3D_5ug5c")
 
 [node name="PingSound" type="AudioStreamPlayer3D" parent="BasementRoom/RadarTerminal"]
-stream = ExtResource("15_351bi")
+stream = ExtResource("18_7qot2")
+bus = &"Indoors"
 
 [node name="Collider" type="StaticBody3D" parent="BasementRoom/RadarTerminal"]
 
@@ -529,7 +530,7 @@ spot_angle = 48.226097
 
 [node name="ExitBasement" type="Area3D" parent="BasementRoom" node_paths=PackedStringArray("destination", "interact_sfx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3079405, 1.4628296, 0.16949873)
-script = ExtResource("7_jvpjp")
+script = ExtResource("12_p5sj2")
 destination = NodePath("../../LighthouseRoom/BasementReturn")
 actionbar_prompt = "Press E to go up"
 interact_sfx = NodePath("../../Player/LadderSound")
@@ -542,8 +543,8 @@ shape = SubResource("BoxShape3D_e304g")
 unique_name_in_owner = true
 transform = Transform3D(1.9998785, 0, 3.4641716, 0, 4, 0, -3.4641716, 0, 1.9998785, 29.15069, -5.231607, -68.69992)
 visible = false
-material_override = ExtResource("15_kudqo")
-mesh = ExtResource("16_5k8xk")
+material_override = ExtResource("19_i22h4")
+mesh = ExtResource("20_2vgnc")
 
 [node name="FadeRect" type="ColorRect" parent="."]
 unique_name_in_owner = true
@@ -554,17 +555,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
-script = ExtResource("8_t871u")
+script = ExtResource("21_wognk")
 
 [node name="PauseMenu" type="ColorRect" parent="."]
 process_mode = 3
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.11764706)
-script = ExtResource("12_14fha")
+script = ExtResource("22_6q6s1")
 
 [node name="Control" type="Control" parent="PauseMenu"]
 layout_mode = 1

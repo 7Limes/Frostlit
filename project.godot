@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="DevlupFall2025Jam"
-run/main_scene="res://main-scene.tscn"
+run/main_scene="uid://dms36irs04u7e"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

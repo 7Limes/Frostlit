@@ -24,6 +24,9 @@ const DEFAULT_GROUND_TYPE = "stone"
 }
 @onready var wind_sound = $SFX/WindSound
 
+@onready var ambience_bus_index = AudioServer.get_bus_index("Ambience")
+@onready var indoors_bus_index = AudioServer.get_bus_index("Indoors")
+
 
 var mouse_motion: Vector2 = Vector2.ZERO
 var frozen: bool = false
@@ -173,17 +176,19 @@ func toggle_indoors(indoors: bool):
 	snow_particles.visible = not indoors
 	
 	# Handle wind audio
-	var bus_idx = AudioServer.get_bus_index("Ambience")
-	var effect = AudioServer.get_bus_effect(bus_idx, 0)
+	var lowpass_effect = AudioServer.get_bus_effect(ambience_bus_index, 0)
 	var tween = create_tween()
 	tween.set_parallel(true) # Allow both tweens to run simultaneously
 	
+	# Enable reverb when indoors
+	AudioServer.set_bus_effect_enabled(indoors_bus_index, 0, indoors)
+	
 	if indoors:
-		tween.tween_method(func(value): effect.cutoff_hz = value, 20000.0, 2000.0, 2.0)
+		tween.tween_method(func(value): lowpass_effect.cutoff_hz = value, 20000.0, 2000.0, 2.0)
 		tween.tween_property(wind_sound, "volume_db", -10, 2.0)
 		environment.environment.fog_density = 0.01
 	else:
-		tween.tween_method(func(value): effect.cutoff_hz = value, 2000.0, 20000.0, 2.0)
+		tween.tween_method(func(value): lowpass_effect.cutoff_hz = value, 2000.0, 20000.0, 2.0)
 		tween.tween_property(wind_sound	, "volume_db", 0.0, 2.0)
 		environment.environment.fog_density = 0.1
 

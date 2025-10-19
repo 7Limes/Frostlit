@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=3 uid="uid://dms36irs04u7e"]
+
+[ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="1_ekrfg"]
+[ext_resource type="Material" uid="uid://ka1ngl72m45s" path="res://Assets/Materials/SnowParticle/snow-particle.tres" id="1_q2qps"]
+[ext_resource type="ArrayMesh" uid="uid://do4uqx1m321p1" path="res://Assets/Models/lighthouse.obj" id="1_w31pl"]
+[ext_resource type="Script" uid="uid://bw4f1myuutjx5" path="res://Scripts/General/title.gd" id="1_yosvi"]
+[ext_resource type="AudioStream" uid="uid://dwiqpp2kuhmt3" path="res://Assets/Audio/wind.mp3" id="3_fp2oq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ekrfg"]
+
+[sub_resource type="Sky" id="Sky_fp2oq"]
+sky_material = SubResource("ProceduralSkyMaterial_ekrfg")
+
+[sub_resource type="Environment" id="Environment_q2qps"]
+sky = SubResource("Sky_fp2oq")
+ambient_light_source = 3
+fog_enabled = true
+fog_light_color = Color(0.2106368, 0.23213801, 0.26559368, 1)
+fog_density = 0.05
+
+[sub_resource type="QuadMesh" id="QuadMesh_yosvi"]
+material = ExtResource("1_q2qps")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fp2oq"]
+size = Vector2(1000, 1000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q2qps"]
+size = Vector3(1000, 1, 1000)
+
+[node name="Title" type="Node3D"]
+script = ExtResource("1_yosvi")
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = SubResource("Environment_q2qps")
+
+[node name="Camera" type="Camera3D" parent="."]
+
+[node name="SnowParticles" type="CPUParticles3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.3262415, -8.930832)
+amount = 300
+preprocess = 1.0
+randomness = 0.5
+lifetime_randomness = 0.1
+mesh = SubResource("QuadMesh_yosvi")
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 5)
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
+
+[node name="Ocean" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.00783, -12.98611, -12.960081)
+metadata/ground = "snow"
+
+[node name="Mesh" type="MeshInstance3D" parent="Ocean"]
+transform = Transform3D(0.99998367, -0.0035545274, -0.0044668876, 0.0035676754, 0.9999895, 0.0029390273, 0.0044564083, -0.0029548912, 0.9999858, 0.97854185, -0.015907526, -0.1981355)
+material_override = ExtResource("1_ekrfg")
+mesh = SubResource("PlaneMesh_fp2oq")
+skeleton = NodePath("")
+
+[node name="Collision" type="CollisionShape3D" parent="Ocean"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.62923765, 0)
+shape = SubResource("BoxShape3D_q2qps")
+
+[node name="Lighthouse" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.345436, -13.628913, -15.843199)
+mesh = ExtResource("1_w31pl")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighthouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.250076, 0)
+light_color = Color(0.91, 0.89544004, 0.8008, 1)
+light_energy = 5.0
+omni_range = 14.317731
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fp2oq")
+autoplay = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="HBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Game Title"
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 25
+text = "Begin"
+
+[node name="Spacing" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+
+[connection signal="pressed" from="HBoxContainer/CenterContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

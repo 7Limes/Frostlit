@@ -93,19 +93,23 @@ shape = SubResource("CylinderShape3D_4ntmi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360124, 0)
 stream = SubResource("AudioStreamRandomizer_8mwp6")
 volume_db = -25.501
+bus = &"Indoors"
 
 [node name="StoneFootstepSounds" type="AudioStreamPlayer3D" parent="SFX"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360124, 0)
 stream = SubResource("AudioStreamRandomizer_qemgg")
 volume_db = -7.767
+bus = &"Indoors"
 
 [node name="WoodFootstepSounds" type="AudioStreamPlayer3D" parent="SFX"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.360124, 0)
 stream = SubResource("AudioStreamRandomizer_qs4pp")
 volume_db = -31.376
+bus = &"Indoors"
 
 [node name="WindSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("29_bbimk")
+volume_db = -10.0
 autoplay = true
 parameters/looping = true
 script = ExtResource("30_m0h3t")
