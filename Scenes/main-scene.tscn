@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=83 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="1_reee1"]
 [ext_resource type="AudioStream" uid="uid://bsnwukbh1y8dl" path="res://Assets/Audio/Door/door-open.mp3" id="2_1kx5o"]
@@ -23,8 +23,10 @@
 [ext_resource type="Script" uid="uid://ctkrdogec66yk" path="res://Scripts/Radar/radar.gd" id="17_uwmks"]
 [ext_resource type="AudioStream" uid="uid://cktltx754rtnq" path="res://Assets/Audio/radar-ping.mp3" id="18_7qot2"]
 [ext_resource type="AudioStream" uid="uid://lf0le550b7e0" path="res://Assets/Audio/Boom/boom-02.mp3" id="18_8wqdv"]
+[ext_resource type="AudioStream" uid="uid://c1hniqd8wn3f5" path="res://Assets/Audio/Boom/boom-01.mp3" id="19_2vgnc"]
 [ext_resource type="Material" uid="uid://ckhv8g8ayig40" path="res://Assets/Materials/Basic/black.tres" id="19_i22h4"]
 [ext_resource type="PackedScene" uid="uid://dcs05twgc2vyx" path="res://Assets/Models/Lighthouse/LHOU.blend" id="19_uwmks"]
+[ext_resource type="AudioStream" uid="uid://cjwu25x2kc7di" path="res://Assets/Audio/ice-break.mp3" id="19_wognk"]
 [ext_resource type="ArrayMesh" uid="uid://dejosbsv1h0x3" path="res://Assets/Models/creature.obj" id="20_2vgnc"]
 [ext_resource type="PackedScene" uid="uid://bgoneejnlh5kd" path="res://Assets/Models/Door/dooorq.blend" id="21_7qot2"]
 [ext_resource type="PackedScene" uid="uid://cxlfiooifa75o" path="res://Assets/Models/Hatch/hatch.blend" id="21_rpa78"]
@@ -35,6 +37,7 @@
 [ext_resource type="Material" uid="uid://bo10sw7u2ebpt" path="res://Assets/Materials/Document/document.tres" id="24_p5sj2"]
 [ext_resource type="Script" uid="uid://bjadfrb6mnhgy" path="res://Scripts/Lighthouse/tutorial_document.gd" id="25_5ihgu"]
 [ext_resource type="ArrayMesh" uid="uid://sa63x6flgtaf" path="res://Assets/Models/submarine.obj" id="27_575dc"]
+[ext_resource type="PackedScene" uid="uid://bcm3ghbdytg4q" path="res://Assets/Models/Lantern/lantern_hanging.fbx" id="27_wognk"]
 [ext_resource type="ArrayMesh" uid="uid://ddnnwss3chyry" path="res://Assets/Models/Stove/stove.obj" id="30_lercd"]
 [ext_resource type="PackedScene" uid="uid://c44qi3quk5ttb" path="res://Assets/Models/Basement/bunker.blend" id="32_8wqdv"]
 [ext_resource type="PackedScene" uid="uid://c82d0hw73ugw7" path="res://Assets/Models/Table/Table.glb" id="32_ugwxa"]
@@ -88,21 +91,23 @@ material = ExtResource("12_5trvw")
 size = Vector2(20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i22h4"]
-size = Vector3(4.2296143, 16.41034, 77.06716)
+size = Vector3(4.2296143, 16.41034, 55.451424)
+
+[sub_resource type="QuadMesh" id="QuadMesh_i22h4"]
+size = Vector2(9, 9)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7qot2"]
 height = 6.1257324
 radius = 3.0981445
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e304g"]
-size = Vector3(2.0699801, 1.8817468, 1.7387863)
+size = Vector3(2.0699801, 1.8817468, 2.598515)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qot2"]
 size = Vector3(1, 2.3494873, 1.3764648)
 
-[sub_resource type="SphereMesh" id="SphereMesh_jvpjp"]
-radius = 0.1
-height = 0.2
+[sub_resource type="BoxShape3D" id="BoxShape3D_2vgnc"]
+size = Vector3(1.2808838, 1, 1.09375)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_r7pl7"]
 data = PackedVector3Array(2.1048, 3.5, 5.0813, 0, 3.5, 5.5, 0, 0, 5.5, 2.1048, 0, 5.0813, 2.1048, 3.5, 5.0813, 0, 0, 5.5, 3.8890998, 3.5, 3.8890998, 2.1048, 3.5, 5.0813, 2.1048, 0, 5.0813, 3.8890998, 0, 3.8890998, 3.8890998, 3.5, 3.8890998, 2.1048, 0, 5.0813, 5.0813, 3.5, 2.1048, 3.8890998, 3.5, 3.8890998, 3.8890998, 0, 3.8890998, 5.0813, 0, 2.1048, 5.0813, 3.5, 2.1048, 3.8890998, 0, 3.8890998, 5.5, 3.5, 0, 5.0813, 3.5, 2.1048, 5.0813, 0, 2.1048, 5.5, 0, 0, 5.5, 3.5, 0, 5.0813, 0, 2.1048, 5.0813, 3.5, -2.1048, 5.5, 3.5, 0, 5.5, 0, 0, 5.0813, 0, -2.1048, 5.0813, 3.5, -2.1048, 5.5, 0, 0, 3.8890998, 3.5, -3.8890998, 5.0813, 3.5, -2.1048, 5.0813, 0, -2.1048, 3.8890998, 0, -3.8890998, 3.8890998, 3.5, -3.8890998, 5.0813, 0, -2.1048, 2.1048, 3.5, -5.0813, 3.8890998, 3.5, -3.8890998, 3.8890998, 0, -3.8890998, 2.1048, 0, -5.0813, 2.1048, 3.5, -5.0813, 3.8890998, 0, -3.8890998, 0, 3.5, -5.5, 2.1048, 3.5, -5.0813, 2.1048, 0, -5.0813, 0, 0, -5.5, 0, 3.5, -5.5, 2.1048, 0, -5.0813, -2.1048, 3.5, -5.0813, 0, 3.5, -5.5, 0, 0, -5.5, -2.1048, 0, -5.0813, -2.1048, 3.5, -5.0813, 0, 0, -5.5, -3.8890998, 3.5, -3.8890998, -2.1048, 3.5, -5.0813, -2.1048, 0, -5.0813, -3.8890998, 0, -3.8890998, -3.8890998, 3.5, -3.8890998, -2.1048, 0, -5.0813, -5.0813, 3.5, -2.1048, -3.8890998, 3.5, -3.8890998, -3.8890998, 0, -3.8890998, -5.0813, 0, -2.1048, -5.0813, 3.5, -2.1048, -3.8890998, 0, -3.8890998, -5.5, 3.5, 0, -5.0813, 3.5, -2.1048, -5.0813, 0, -2.1048, -5.5, 0, 0, -5.5, 3.5, 0, -5.0813, 0, -2.1048, -5.0813, 3.5, 2.1048, -5.5, 3.5, 0, -5.5, 0, 0, -5.0813, 0, 2.1048, -5.0813, 3.5, 2.1048, -5.5, 0, 0, -3.8890998, 3.5, 3.8890998, -5.0813, 3.5, 2.1048, -5.0813, 0, 2.1048, -3.8890998, 0, 3.8890998, -3.8890998, 3.5, 3.8890998, -5.0813, 0, 2.1048, -2.1048, 3.5, 5.0813, -3.8890998, 3.5, 3.8890998, -3.8890998, 0, 3.8890998, -2.1048, 0, 5.0813, -2.1048, 3.5, 5.0813, -3.8890998, 0, 3.8890998, 0, 3.5, 5.5, -2.1048, 3.5, 5.0813, -2.1048, 0, 5.0813, 0, 0, 5.5, 0, 3.5, 5.5, -2.1048, 0, 5.0813, 2.1048, 0, 5.0813, 0, 0, 5.5, 0, -3.5, 5.5, 2.1048, -3.5, 5.0813, 2.1048, 0, 5.0813, 0, -3.5, 5.5, 3.8890998, 0, 3.8890998, 2.1048, 0, 5.0813, 2.1048, -3.5, 5.0813, 3.8890998, -3.5, 3.8890998, 3.8890998, 0, 3.8890998, 2.1048, -3.5, 5.0813, 5.0813, 0, 2.1048, 3.8890998, 0, 3.8890998, 3.8890998, -3.5, 3.8890998, 5.0813, -3.5, 2.1048, 5.0813, 0, 2.1048, 3.8890998, -3.5, 3.8890998, 5.5, 0, 0, 5.0813, 0, 2.1048, 5.0813, -3.5, 2.1048, 5.5, -3.5, 0, 5.5, 0, 0, 5.0813, -3.5, 2.1048, 5.0813, 0, -2.1048, 5.5, 0, 0, 5.5, -3.5, 0, 5.0813, -3.5, -2.1048, 5.0813, 0, -2.1048, 5.5, -3.5, 0, 3.8890998, 0, -3.8890998, 5.0813, 0, -2.1048, 5.0813, -3.5, -2.1048, 3.8890998, -3.5, -3.8890998, 3.8890998, 0, -3.8890998, 5.0813, -3.5, -2.1048, 2.1048, 0, -5.0813, 3.8890998, 0, -3.8890998, 3.8890998, -3.5, -3.8890998, 2.1048, -3.5, -5.0813, 2.1048, 0, -5.0813, 3.8890998, -3.5, -3.8890998, 0, 0, -5.5, 2.1048, 0, -5.0813, 2.1048, -3.5, -5.0813, 0, -3.5, -5.5, 0, 0, -5.5, 2.1048, -3.5, -5.0813, -2.1048, 0, -5.0813, 0, 0, -5.5, 0, -3.5, -5.5, -2.1048, -3.5, -5.0813, -2.1048, 0, -5.0813, 0, -3.5, -5.5, -3.8890998, 0, -3.8890998, -2.1048, 0, -5.0813, -2.1048, -3.5, -5.0813, -3.8890998, -3.5, -3.8890998, -3.8890998, 0, -3.8890998, -2.1048, -3.5, -5.0813, -5.0813, 0, -2.1048, -3.8890998, 0, -3.8890998, -3.8890998, -3.5, -3.8890998, -5.0813, -3.5, -2.1048, -5.0813, 0, -2.1048, -3.8890998, -3.5, -3.8890998, -5.5, 0, 0, -5.0813, 0, -2.1048, -5.0813, -3.5, -2.1048, -5.5, -3.5, 0, -5.5, 0, 0, -5.0813, -3.5, -2.1048, -5.0813, 0, 2.1048, -5.5, 0, 0, -5.5, -3.5, 0, -5.0813, -3.5, 2.1048, -5.0813, 0, 2.1048, -5.5, -3.5, 0, -3.8890998, 0, 3.8890998, -5.0813, 0, 2.1048, -5.0813, -3.5, 2.1048, -3.8890998, -3.5, 3.8890998, -3.8890998, 0, 3.8890998, -5.0813, -3.5, 2.1048, -2.1048, 0, 5.0813, -3.8890998, 0, 3.8890998, -3.8890998, -3.5, 3.8890998, -2.1048, -3.5, 5.0813, -2.1048, 0, 5.0813, -3.8890998, -3.5, 3.8890998, 0, 0, 5.5, -2.1048, 0, 5.0813, -2.1048, -3.5, 5.0813, 0, -3.5, 5.5, 0, 0, 5.5, -2.1048, -3.5, 5.0813)
@@ -411,9 +416,10 @@ material_override = ExtResource("12_5trvw")
 mesh = SubResource("QuadMesh_ikdcw")
 skeleton = NodePath("../Geometry")
 
-[node name="BoomTrigger" type="Area3D" parent="Sections/Section1"]
+[node name="BoomTrigger" type="Area3D" parent="Sections/Section1" node_paths=PackedStringArray("sounds")]
 transform = Transform3D(0.8754561, 0, -0.48329765, 0, 1, 0, 0.48329765, 0, 0.8754561, 52.477547, 15.037771, -164.7663)
 script = ExtResource("9_lercd")
+sounds = [NodePath("../BoomSound")]
 
 [node name="Collision" type="CollisionShape3D" parent="Sections/Section1/BoomTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.420372, -2.8661346, 1.5258789e-05)
@@ -566,16 +572,18 @@ visible = false
 mesh = SubResource("QuadMesh_7qot2")
 skeleton = NodePath("../BoomSound")
 
-[node name="BoomTrigger" type="Area3D" parent="Sections/Section2"]
+[node name="BoomTrigger" type="Area3D" parent="Sections/Section2" node_paths=PackedStringArray("sounds")]
 transform = Transform3D(0.9685615, 0, -0.24877442, 0, 1, 0, 0.24877442, 0, 0.9685615, 122.32711, 0, 33.504288)
 script = ExtResource("9_lercd")
+sounds = [NodePath("../BoomSound")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sections/Section2/BoomTrigger"]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3.0577183e-05, 6.2843285, 1.3969469)
 shape = SubResource("BoxShape3D_i22h4")
 
-[node name="Section3" type="Node3D" parent="Sections"]
+[node name="Section3" type="Node3D" parent="Sections" node_paths=PackedStringArray("item_node")]
 script = ExtResource("6_575dc")
+item_node = NodePath("Item")
 
 [node name="Geometry" type="Node3D" parent="Sections/Section3"]
 
@@ -619,6 +627,30 @@ radius = 4.998047
 height = 19.598389
 sides = 6
 
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="Sections/Section3/Geometry"]
+transform = Transform3D(0.85659176, 0.5149727, 0.03246032, -0.133487, 0.16039327, 0.9779852, 0.49842924, -0.8420672, 0.20613372, -36.40758, 1.5125921, 41.207012)
+material_override = ExtResource("7_jqwu2")
+use_collision = true
+radius = 3.6835938
+height = 20.27362
+sides = 10
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="Sections/Section3/Geometry"]
+transform = Transform3D(0.7711841, 0.6212516, 0.13900203, -0.11914158, -0.07364448, 0.9901423, 0.62536407, -0.78014296, 0.017223457, -56.212708, 2.30725, 77.02565)
+material_override = ExtResource("7_jqwu2")
+use_collision = true
+radius = 5.1655273
+height = 41.848923
+sides = 10
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="Sections/Section3/Geometry"]
+transform = Transform3D(0.6862185, 0.7139907, 0.13900204, -0.10884596, -0.088152036, 0.9901423, 0.7192055, -0.6945838, 0.017223455, -41.489838, 1.4884348, 87.539604)
+material_override = ExtResource("7_jqwu2")
+use_collision = true
+radius = 5.1655273
+height = 44.243797
+sides = 10
+
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Sections/Section3/Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.793816, 4.675397, 60.530823)
 material_override = ExtResource("14_ikdcw")
@@ -627,25 +659,116 @@ radius = 4.998047
 height = 19.598389
 sides = 6
 
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="Sections/Section3/Geometry"]
+transform = Transform3D(0.6396671, 0, -0.7686521, 0, 1, 0, 0.7686521, 0, 0.6396671, -88.27639, -2.9980445, 129.27568)
+material_override = ExtResource("14_ikdcw")
+use_collision = true
+radius = 2.765625
+height = 16.865417
+sides = 6
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Sections/Section3/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.73491, 4.675397, 60.530823)
+material_override = ExtResource("14_ikdcw")
+use_collision = true
+radius = 4.998047
+height = 19.598389
+sides = 6
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Sections/Section3/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.671232, 4.675397, 69.18876)
+material_override = ExtResource("14_ikdcw")
+use_collision = true
+radius = 4.998047
+height = 19.598389
+sides = 6
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Sections/Section3/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7511215, 4.675397, 56.90692)
+material_override = ExtResource("14_ikdcw")
+use_collision = true
+radius = 4.998047
+height = 19.598389
+sides = 6
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Sections/Section3/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.491744, 4.675397, 52.325233)
+material_override = ExtResource("14_ikdcw")
+use_collision = true
+radius = 4.998047
+height = 19.598389
+sides = 6
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Sections/Section3/Geometry"]
+transform = Transform3D(0.886244, -0.46321872, 0, 0.46321872, 0.886244, 0, 0, 0, 1, -97.14815, 2.0575352, 129.21394)
+material_override = ExtResource("13_575dc")
+use_collision = true
+size = Vector3(15.922119, 0.5145874, 3.0393066)
+metadata/ground = "wood"
+
 [node name="SwimTrigger" type="Area3D" parent="Sections/Section3" node_paths=PackedStringArray("start_pos", "end_pos")]
 transform = Transform3D(0.58738995, 0, 0.8093042, 0, 1, 0, -0.8093042, 0, 0.58738995, -20.634438, 5.5354376, 32.349403)
 script = ExtResource("10_wa5e3")
-start_pos = NodePath("../Start")
-end_pos = NodePath("../End")
+start_pos = NodePath("../Start1")
+end_pos = NodePath("../End1")
 swim_time = 3.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sections/Section3/SwimTrigger"]
 transform = Transform3D(0.99999994, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 0.99999994, 0, 0, 10.445913)
 shape = SubResource("BoxShape3D_i22h4")
 
-[node name="Start" type="Node3D" parent="Sections/Section3"]
+[node name="Start1" type="Node3D" parent="Sections/Section3"]
 transform = Transform3D(0.8443747, 0, -0.53575325, 0, 1, 0, 0.53575325, 0, 0.8443747, 10.544, -5.5, 66.426)
 
-[node name="End" type="Node3D" parent="Sections/Section3"]
+[node name="End1" type="Node3D" parent="Sections/Section3"]
 transform = Transform3D(0.58738995, 0, 0.8093042, 0, 1, 0, -0.8093042, 0, 0.58738995, -80.64474, -5.5, -0.79458284)
 
+[node name="SwimTrigger2" type="Area3D" parent="Sections/Section3" node_paths=PackedStringArray("start_pos", "end_pos")]
+transform = Transform3D(0.35639566, 0, 0.93433523, 0, 1, 0, -0.93433523, 0, 0.35639566, -33.817966, 5.5354376, 62.365383)
+script = ExtResource("10_wa5e3")
+start_pos = NodePath("../Start2")
+end_pos = NodePath("../End2")
+swim_time = 1.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sections/Section3/SwimTrigger2"]
+transform = Transform3D(0.99999994, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 0.99999994, 0, 0, 10.445913)
+shape = SubResource("BoxShape3D_i22h4")
+
+[node name="Start2" type="Node3D" parent="Sections/Section3"]
+transform = Transform3D(-0.84892565, 0, 0.52851266, 0, 1, 0, -0.52851266, 0, -0.84892565, -68.193344, -11, 50.671474)
+
+[node name="End2" type="Node3D" parent="Sections/Section3"]
+transform = Transform3D(-0.30994633, 0, 0.9507543, 0, 1, 0, -0.9507543, 0, -0.30994633, -2.1810806, -11, 79.89133)
+
+[node name="Crack" type="MeshInstance3D" parent="Sections/Section3"]
+transform = Transform3D(0.74518526, 0.66685784, -3.7252903e-08, 6.286013e-08, 4.1348045e-09, 1.0000001, 0.66685796, -0.7451851, -2.9802322e-08, -31.867226, 0.07919193, 64.12772)
+visible = false
+material_override = ExtResource("12_5trvw")
+mesh = SubResource("QuadMesh_i22h4")
+skeleton = NodePath("../BoomSound")
+
+[node name="BreakSound" type="AudioStreamPlayer3D" parent="Sections/Section3"]
+transform = Transform3D(0.34280738, 0, 0.9394058, 0, 1, 0, -0.9394058, 0, 0.34280738, -32.06215, -1.0700524, 64.37869)
+stream = ExtResource("19_wognk")
+volume_db = -10.0
+
+[node name="BoomSound" type="AudioStreamPlayer3D" parent="Sections/Section3"]
+transform = Transform3D(0.34280738, 0, 0.9394058, 0, 1, 0, -0.9394058, 0, 0.34280738, -32.06215, -1.0700524, 64.37869)
+stream = ExtResource("19_2vgnc")
+volume_db = 20.0
+
+[node name="BoomTrigger" type="Area3D" parent="Sections/Section3" node_paths=PackedStringArray("sounds")]
+transform = Transform3D(0.34280738, 0, 0.9394058, 0, 1, 0, -0.9394058, 0, 0.34280738, -38.830315, 5.5354376, 62.96588)
+script = ExtResource("9_lercd")
+sounds = [NodePath("../BoomSound"), NodePath("../BreakSound")]
+item_state = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sections/Section3/BoomTrigger"]
+transform = Transform3D(1, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, 1, 0.3823641, 0, 3.9439487)
+shape = SubResource("BoxShape3D_i22h4")
+
 [node name="Item" type="Area3D" parent="Sections/Section3"]
-transform = Transform3D(0.99586225, 0, -0.090875916, 0, 1, 0, 0.090875916, 0, 0.99586225, -123.324554, 1.8428578, 121.15938)
+transform = Transform3D(0.99586225, 0, -0.090875916, 0, 1, 0, 0.090875916, 0, 0.99586225, -88.04624, 7.3220243, 129.2072)
 script = ExtResource("7_5trvw")
 
 [node name="Mesh" type="MeshInstance3D" parent="Sections/Section3/Item"]
@@ -759,22 +882,29 @@ transform = Transform3D(-1.7484555e-07, 0, -4, 0, 4, 0, 4, 0, -1.7484555e-07, -0
 transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, -0.18661763, -2.153778, -3.178161)
 
 [node name="Collision" type="CollisionShape3D" parent="Rooms/LighthouseRoom/EnterBasement"]
-transform = Transform3D(0.9999625, 0, 0.008656725, 0, 1, 0, -0.008656725, 0, 0.9999625, -0.1505661, 0.31399536, -0.16969538)
+transform = Transform3D(0.9999625, 0, 0.008656725, 0, 1, 0, -0.008656725, 0, 0.9999625, -0.15428734, 0.31399536, -0.5995436)
 shape = SubResource("BoxShape3D_e304g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rooms/LighthouseRoom/EnterBasement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25521898, -0.3687439, -0.93997574)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/LighthouseRoom/EnterBasement/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07904053, 0, -0.046875)
+shape = SubResource("BoxShape3D_2vgnc")
 
 [node name="BasementReturn" type="Node3D" parent="Rooms/LighthouseRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5594485, -1.2602539, 4.0104985)
 
-[node name="Light" type="MeshInstance3D" parent="Rooms/LighthouseRoom"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.5457764, 0)
-mesh = SubResource("SphereMesh_jvpjp")
-skeleton = NodePath("SpotLight3D")
+[node name="Lantern" parent="Rooms/LighthouseRoom" instance=ExtResource("27_wognk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.640625, 0)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Rooms/LighthouseRoom/Light"]
+[node name="Light" type="OmniLight3D" parent="Rooms/LighthouseRoom/Lantern"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.0059509, 4.397151e-08)
 light_color = Color(1, 0.75639063, 0.37819606, 1)
-light_energy = 7.75
-spot_range = 7.719363
-spot_angle = 48.226097
+light_energy = 5.0
+shadow_enabled = true
+shadow_caster_mask = 4294966783
+omni_range = 7.639478
 
 [node name="Walls" type="StaticBody3D" parent="Rooms/LighthouseRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.7821655, 0)
@@ -919,10 +1049,11 @@ the beacon upstairs.
 This is the 2nd most remote location on Earth,
 so in the event of an apocalypse, remember to
 not be here.
-"
+
+Enjoy your stay!"
 
 [node name="BeaconRoom" type="CSGCylinder3D" parent="Rooms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.049988, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.14563, 0)
 use_collision = true
 radius = 7.8793945
 height = 1.0
@@ -959,7 +1090,7 @@ mesh = SubResource("CapsuleMesh_es55r")
 stream = ExtResource("15_4f5p3")
 
 [node name="BasementRoom" type="Node3D" parent="Rooms"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -9.8967285, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -20.50058, 0)
 
 [node name="EnterPoint" type="Node3D" parent="Rooms/BasementRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3748708, 0.9677124, -1.038089e-07)
@@ -1017,16 +1148,15 @@ light_color = Color(0.36078432, 1, 0.20392157, 1)
 light_energy = 0.75
 omni_range = 1.7988635
 
-[node name="Light" type="MeshInstance3D" parent="Rooms/BasementRoom"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.629822, 0)
-mesh = SubResource("SphereMesh_jvpjp")
-skeleton = NodePath("SpotLight3D")
+[node name="Lantern" parent="Rooms/BasementRoom" instance=ExtResource("27_wognk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.63, 0)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Rooms/BasementRoom/Light"]
+[node name="Light" type="OmniLight3D" parent="Rooms/BasementRoom/Lantern"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.0059509, 4.397151e-08)
 light_color = Color(1, 0.75639063, 0.37819606, 1)
-light_energy = 7.75
-spot_range = 7.719363
-spot_angle = 48.226097
+shadow_enabled = true
+shadow_caster_mask = 4294966783
+omni_range = 9.204
 
 [node name="ExitBasement" type="Area3D" parent="Rooms/BasementRoom" node_paths=PackedStringArray("destination", "interact_sfx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3079405, 1.4628296, 0.16949873)
@@ -1183,6 +1313,8 @@ button_mask = 4
 [connection signal="body_entered" from="Sections/Section2/Item" to="Sections/Section2/Item" method="_on_body_entered"]
 [connection signal="body_entered" from="Sections/Section2/BoomTrigger" to="Sections/Section2/BoomTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="Sections/Section3/SwimTrigger" to="Sections/Section3/SwimTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="Sections/Section3/SwimTrigger2" to="Sections/Section3/SwimTrigger2" method="_on_body_entered"]
+[connection signal="body_entered" from="Sections/Section3/BoomTrigger" to="Sections/Section3/BoomTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="Sections/Section3/Item" to="Sections/Section3/Item" method="_on_body_entered"]
 [connection signal="body_entered" from="Island/EnterLighthouseArea" to="Island/EnterLighthouseArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Island/EnterLighthouseArea" to="Island/EnterLighthouseArea" method="_on_body_exited"]

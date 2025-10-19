@@ -2,6 +2,9 @@ extends Node3D
 
 @onready var fade_rect = $FadeRect
 @onready var wind_sound = $WindSound
+@onready var light = $Light
+
+const LIGHT_ROTATE_SPEED = 3
 
 func _on_play_button_pressed() -> void:
 	var fade_tweener = create_tween()
@@ -9,3 +12,7 @@ func _on_play_button_pressed() -> void:
 	fade_tweener.tween_callback(func(): get_tree().change_scene_to_file("res://Scenes/intro.tscn"))
 	var volume_tweener = create_tween()
 	volume_tweener.tween_property(wind_sound, 'volume_db', -40.0, 1.0)
+
+
+func _process(delta: float) -> void:
+	light.rotate_y(LIGHT_ROTATE_SPEED * delta)

@@ -16,7 +16,6 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 	
 	if body is Player and body.item_state == item_state:
-		print('trigger')
 		creature.visible = true
 		creature.global_position = start_pos.global_position
 		creature.rotation = start_pos.rotation
