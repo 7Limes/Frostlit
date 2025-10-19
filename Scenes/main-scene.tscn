@@ -1,16 +1,14 @@
-[gd_scene load_steps=50 format=3 uid="uid://cnivq5x3pn6cr"]
+[gd_scene load_steps=51 format=3 uid="uid://cnivq5x3pn6cr"]
 
 [ext_resource type="PackedScene" uid="uid://1a0i72xpxodg" path="res://Player/player.tscn" id="1_reee1"]
 [ext_resource type="AudioStream" uid="uid://bsnwukbh1y8dl" path="res://Assets/Audio/Door/door-open.mp3" id="2_1kx5o"]
 [ext_resource type="AudioStream" uid="uid://bck3t1o7ld4wu" path="res://Assets/Audio/Door/door_close.mp3" id="3_jqwu2"]
 [ext_resource type="AudioStream" uid="uid://cscrh6v1wkg8o" path="res://Assets/Audio/ladder.mp3" id="4_023hc"]
 [ext_resource type="Material" uid="uid://cfeylmmh6clja" path="res://Assets/Materials/Ice/ice-new-big.tres" id="5_5trvw"]
-[ext_resource type="Material" uid="uid://d0mxw0twcpkls" path="res://Assets/Materials/Ice/ice.tres" id="5_oo87p"]
 [ext_resource type="PackedScene" uid="uid://42vfcquouxmc" path="res://Assets/Models/BoatWSail.fbx" id="6_1kx5o"]
 [ext_resource type="Script" uid="uid://2e23ufbfrlxt" path="res://Scripts/Radar/section.gd" id="6_575dc"]
 [ext_resource type="Script" uid="uid://3m43tgnbe0a6" path="res://Scripts/Item/item.gd" id="7_5trvw"]
 [ext_resource type="Material" uid="uid://chsn7jtx7r1jm" path="res://Assets/Materials/RustyMetal/rusty-metal.tres" id="7_jqwu2"]
-[ext_resource type="Material" uid="uid://b8eminigl0qj1" path="res://Assets/Materials/Ice/ice-opaque.tres" id="7_oo87p"]
 [ext_resource type="AudioStream" uid="uid://bxycu2c54j3sy" path="res://Assets/Audio/Boom/boom-03.mp3" id="8_ikdcw"]
 [ext_resource type="Script" uid="uid://54b3fpdf1hxx" path="res://Scripts/ScriptedEvents/boom_1.gd" id="9_lercd"]
 [ext_resource type="Script" uid="uid://bmpdklpkp6q8f" path="res://Scripts/ScriptedEvents/swim_1.gd" id="10_wa5e3"]
@@ -28,6 +26,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dejosbsv1h0x3" path="res://Assets/Models/creature.obj" id="20_2vgnc"]
 [ext_resource type="Script" uid="uid://bjhuygaqnea2o" path="res://Scripts/General/fade_rect.gd" id="21_wognk"]
 [ext_resource type="Script" uid="uid://bi3xulqxmf40o" path="res://Scripts/General/pause_menu.gd" id="22_6q6s1"]
+[ext_resource type="ArrayMesh" uid="uid://sa63x6flgtaf" path="res://Assets/Models/submarine.obj" id="27_575dc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qetym"]
 
@@ -47,6 +46,9 @@ size = Vector2(1000, 1000)
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2uwy"]
 size = Vector3(1000, 1, 1000)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1kx5o"]
+size = Vector3(0.4071045, 0.16656494, 0.8883667)
+
 [sub_resource type="PrismMesh" id="PrismMesh_jvpjp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pc8c5"]
@@ -58,8 +60,8 @@ size = Vector3(249.35492, 41.97934, 11.817871)
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2hq8"]
 size = Vector3(84.16615, 25.667725, 6.189453)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1kx5o"]
-size = Vector3(0.4071045, 0.16656494, 0.8883667)
+[sub_resource type="BoxShape3D" id="BoxShape3D_5trvw"]
+size = Vector3(1, 9.228027, 15.155029)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e304g"]
 size = Vector3(2.4065619, 3.6185398, 2.146753)
@@ -92,6 +94,9 @@ size = Vector3(2.1557007, 2.88031, 4.9554443)
 [sub_resource type="BoxShape3D" id="BoxShape3D_es55r"]
 size = Vector3(1, 1.824707, 3.9188232)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ikdcw"]
+size = Vector3(2.043396, 2.1501465, 11.105957)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_reee1")]
@@ -118,7 +123,7 @@ environment = SubResource("Environment_5e1uj")
 metadata/ground = "snow"
 
 [node name="Mesh" type="MeshInstance3D" parent="Ocean"]
-transform = Transform3D(0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.97854185, -0.015907526, -0.1981355)
+transform = Transform3D(0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.7421832, -0.015907526, -0.21921933)
 material_override = ExtResource("5_5trvw")
 mesh = SubResource("PlaneMesh_qetym")
 skeleton = NodePath("")
@@ -159,7 +164,7 @@ height = 66.04323
 
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(0.86094815, -0.22544771, 0.45600572, 0.26382297, 0.96433496, -0.021339372, -0.43493155, 0.13867691, 0.88972086, 131.75237, -10.728529, -145.21118)
-material_override = ExtResource("7_oo87p")
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 radius = 9.902344
 height = 66.04323
@@ -180,7 +185,7 @@ height = 66.04323
 
 [node name="CSGCylinder3D15" type="CSGCylinder3D" parent="Sections/Section1/Geometry"]
 transform = Transform3D(-0.9457605, 0.25426707, -0.20220032, 0.26382303, 0.9643351, -0.02133938, 0.18956307, -0.073527016, -0.97911155, 100.42058, -10.728529, -72.08438)
-material_override = ExtResource("5_oo87p")
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 radius = 9.902344
 height = 66.04323
@@ -248,6 +253,16 @@ use_collision = true
 radius = 9.995117
 height = 67.6221
 
+[node name="BoatWSail" parent="Sections/Section1/Geometry" instance=ExtResource("6_1kx5o")]
+transform = Transform3D(-0.053215653, -4.4350767, -5.4154673, 2.628682, -5.0319023, 4.0951195, -6.4874644, -2.0025167, 1.7037392, 56.285122, 0.8985717, -146.67654)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sections/Section1/Geometry/BoatWSail"]
+metadata/ground = "wood"
+
+[node name="Collision" type="CollisionShape3D" parent="Sections/Section1/Geometry/BoatWSail/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010803223, 0.07296753, 0.0022888184)
+shape = SubResource("BoxShape3D_1kx5o")
+
 [node name="Item" type="Area3D" parent="Sections/Section1"]
 transform = Transform3D(0.99586225, 0, -0.090875916, 0, 1, 0, 0.090875916, 0, 0.99586225, 96.022964, 1.3381969, -250.88284)
 script = ExtResource("7_5trvw")
@@ -309,12 +324,26 @@ use_collision = true
 size = Vector3(20, 20, 61.64209)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Sections/Section2/Geometry"]
-transform = Transform3D(-0.93310225, 0.18054661, -0.31100368, -0.0016975733, 0.8626114, 0.505864, 0.3596075, 0.47255087, -0.80459815, 95.02924, -8.813087, 53.703968)
+transform = Transform3D(-0.93310225, 0.18054661, -0.31100368, -0.0016975733, 0.8626114, 0.505864, 0.3596075, 0.47255087, -0.80459815, 97.381516, -8.291565, 53.12263)
+material_override = ExtResource("7_jqwu2")
 use_collision = true
-size = Vector3(20, 20, 52.01465)
+size = Vector3(15.190308, 14.834473, 52.01465)
+
+[node name="GateCollider" type="StaticBody3D" parent="Sections/Section2/Geometry"]
+transform = Transform3D(0.7251702, 0, -0.6885698, 0, 1, 0, 0.6885698, 0, 0.7251702, 101.29635, 7.0635033, 26.635817)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sections/Section2/Geometry/GateCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6293945e-06, -4.1140137, 0.002067566)
+shape = SubResource("BoxShape3D_5trvw")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Sections/Section2/Geometry"]
+transform = Transform3D(0.7251702, 0, -0.6885698, 0, 1, 0, 0.6885698, 0, 0.7251702, 101.29635, 7.0635033, 26.635817)
+material_override = ExtResource("7_jqwu2")
+size = Vector3(1.6455536, 0.9251709, 14.726257)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Sections/Section2/Geometry"]
 transform = Transform3D(-0.72242624, 0.68675107, 0.08045622, 0.056204766, -0.057650268, 0.9967536, 0.68916005, 0.72460294, 0.0030492842, 105.793015, 3.0028305, 10.221325)
+material_override = ExtResource("14_ikdcw")
 use_collision = true
 size = Vector3(20, 20, 52.01465)
 
@@ -325,18 +354,36 @@ use_collision = true
 size = Vector3(18.631104, 9.5703125, 63.406616)
 metadata/ground = "wood"
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Sections/Section2/Geometry"]
-transform = Transform3D(-0.9704344, 0.11355368, -0.21298678, -0.17769834, -0.93329513, 0.312064, -0.16334341, 0.34068477, 0.9258797, 165.78441, 3.2125044, 25.76271)
-material_override = ExtResource("13_575dc")
-use_collision = true
-size = Vector3(15.233887, 2.963379, 60.506165)
-metadata/ground = "wood"
-
 [node name="CSGBox3D3" type="CSGBox3D" parent="Sections/Section2/Geometry"]
 transform = Transform3D(0.98109126, 0.03668261, 0.19003668, -0.17486078, 0.5888896, 0.7890702, -0.0829655, -0.80738014, 0.584169, 75.40532, 2.2134104, -20.27266)
 material_override = ExtResource("14_ikdcw")
 use_collision = true
 size = Vector3(20, 20, 60.82715)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Sections/Section2/Geometry"]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 103.350945, 3.1643796, 24.145248)
+material_override = ExtResource("7_jqwu2")
+height = 8.53125
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Sections/Section2/Geometry"]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 102.49118, 3.1643796, 25.589344)
+material_override = ExtResource("7_jqwu2")
+height = 8.53125
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Sections/Section2/Geometry"]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 101.1169, 3.1643796, 26.938902)
+material_override = ExtResource("7_jqwu2")
+height = 8.53125
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Sections/Section2/Geometry"]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 99.68902, 3.1643796, 28.093908)
+material_override = ExtResource("7_jqwu2")
+height = 8.53125
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Sections/Section2/Geometry"]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999994, 98.287186, 3.1643796, 29.509228)
+material_override = ExtResource("7_jqwu2")
+height = 8.53125
 
 [node name="BoatWSail" parent="Sections/Section2/Geometry" instance=ExtResource("6_1kx5o")]
 transform = Transform3D(6.3922315, -0.84611607, -2.7246034, 0, 6.685068, -2.0760245, 2.8529596, 1.8957757, 6.1046433, 78.05919, -0.31442523, 5.247431)
@@ -708,6 +755,18 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 1
 button_mask = 4
+
+[node name="Submarine" type="StaticBody3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 4.6935787, 1.7234604, 0, -1.7234604, 4.6935787, 164.21942, 11.14371, 36.285557)
+
+[node name="Mesh" type="MeshInstance3D" parent="Submarine"]
+material_override = ExtResource("7_jqwu2")
+mesh = ExtResource("27_575dc")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Submarine"]
+transform = Transform3D(1, 0, 0, 0, 1.0000017, 3.874302e-07, 0, -3.874302e-07, 1.0000017, -0.009124756, -0.025024712, -3.5593271)
+shape = SubResource("BoxShape3D_ikdcw")
 
 [connection signal="body_entered" from="Sections/Section1/Item" to="Sections/Section1/Item" method="_on_body_entered"]
 [connection signal="body_entered" from="Sections/Section1/BoomTrigger" to="Sections/Section1/BoomTrigger" method="_on_body_entered"]
