@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bsnwukbh1y8dl" path="res://Assets/Audio/Door/door-open.mp3" id="2_1kx5o"]
 [ext_resource type="AudioStream" uid="uid://bck3t1o7ld4wu" path="res://Assets/Audio/Door/door_close.mp3" id="3_jqwu2"]
 [ext_resource type="AudioStream" uid="uid://cscrh6v1wkg8o" path="res://Assets/Audio/ladder.mp3" id="4_023hc"]
-[ext_resource type="Material" uid="uid://cfeylmmh6clja" path="res://Assets/Materials/Ice/ice-new-big.tres" id="5_5trvw"]
+[ext_resource type="Material" uid="uid://0hlcowo4l2s5" path="res://Assets/Materials/Ice/ice-new-transparent.tres" id="5_7qot2"]
 [ext_resource type="PackedScene" uid="uid://42vfcquouxmc" path="res://Assets/Models/BoatWSail.fbx" id="6_1kx5o"]
 [ext_resource type="Script" uid="uid://2e23ufbfrlxt" path="res://Scripts/Radar/section.gd" id="6_575dc"]
 [ext_resource type="Script" uid="uid://3m43tgnbe0a6" path="res://Scripts/Item/item.gd" id="7_5trvw"]
@@ -201,7 +201,7 @@ metadata/ground = "snow"
 
 [node name="Mesh" type="MeshInstance3D" parent="Ocean"]
 transform = Transform3D(0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0.7421832, -0.015907526, -0.21921933)
-material_override = ExtResource("5_5trvw")
+material_override = ExtResource("5_7qot2")
 mesh = SubResource("PlaneMesh_qetym")
 skeleton = NodePath("")
 
@@ -627,6 +627,23 @@ radius = 4.998047
 height = 19.598389
 sides = 6
 
+[node name="SwimTrigger" type="Area3D" parent="Sections/Section3" node_paths=PackedStringArray("start_pos", "end_pos")]
+transform = Transform3D(0.58738995, 0, 0.8093042, 0, 1, 0, -0.8093042, 0, 0.58738995, -20.634438, 5.5354376, 32.349403)
+script = ExtResource("10_wa5e3")
+start_pos = NodePath("../Start")
+end_pos = NodePath("../End")
+swim_time = 3.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sections/Section3/SwimTrigger"]
+transform = Transform3D(0.99999994, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 0.99999994, 0, 0, 10.445913)
+shape = SubResource("BoxShape3D_i22h4")
+
+[node name="Start" type="Node3D" parent="Sections/Section3"]
+transform = Transform3D(0.8443747, 0, -0.53575325, 0, 1, 0, 0.53575325, 0, 0.8443747, 10.544, -5.5, 66.426)
+
+[node name="End" type="Node3D" parent="Sections/Section3"]
+transform = Transform3D(0.58738995, 0, 0.8093042, 0, 1, 0, -0.8093042, 0, 0.58738995, -80.64474, -5.5, -0.79458284)
+
 [node name="Item" type="Area3D" parent="Sections/Section3"]
 transform = Transform3D(0.99586225, 0, -0.090875916, 0, 1, 0, 0.090875916, 0, 0.99586225, -123.324554, 1.8428578, 121.15938)
 script = ExtResource("7_5trvw")
@@ -637,22 +654,6 @@ skeleton = NodePath("../..")
 
 [node name="Collision" type="CollisionShape3D" parent="Sections/Section3/Item"]
 shape = SubResource("SphereShape3D_pc8c5")
-
-[node name="SwimTrigger" type="Area3D" parent="Sections/Section3" node_paths=PackedStringArray("start_pos", "end_pos")]
-transform = Transform3D(0.5873899, 0, 0.8093041, 0, 1, 0, -0.8093041, 0, 0.5873899, -20.634441, 5.5354376, 32.349403)
-script = ExtResource("10_wa5e3")
-start_pos = NodePath("Start")
-end_pos = NodePath("End")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sections/Section3/SwimTrigger"]
-transform = Transform3D(0.99999994, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 0.99999994, 0, 0, 10.445913)
-shape = SubResource("BoxShape3D_i22h4")
-
-[node name="Start" type="Node3D" parent="Sections/Section3/SwimTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.263716, -5.5, 45.249275)
-
-[node name="End" type="Node3D" parent="Sections/Section3/SwimTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.96157, -5.5, -27.9576)
 
 [node name="Island" type="Node3D" parent="."]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 2.5955276, -7.591957)
@@ -689,6 +690,7 @@ use_collision = true
 radius = 20.0
 radial_segments = 24
 rings = 16
+metadata/ground = "snow"
 
 [node name="Rooms" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -757,7 +759,7 @@ transform = Transform3D(-1.7484555e-07, 0, -4, 0, 4, 0, 4, 0, -1.7484555e-07, -0
 transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, -0.18661763, -2.153778, -3.178161)
 
 [node name="Collision" type="CollisionShape3D" parent="Rooms/LighthouseRoom/EnterBasement"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1505661, 0.31399536, -0.16969538)
+transform = Transform3D(0.9999625, 0, 0.008656725, 0, 1, 0, -0.008656725, 0, 0.9999625, -0.1505661, 0.31399536, -0.16969538)
 shape = SubResource("BoxShape3D_e304g")
 
 [node name="BasementReturn" type="Node3D" parent="Rooms/LighthouseRoom"]
@@ -1180,8 +1182,8 @@ button_mask = 4
 [connection signal="body_entered" from="Sections/Section1/SwimTrigger" to="Sections/Section1/SwimTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="Sections/Section2/Item" to="Sections/Section2/Item" method="_on_body_entered"]
 [connection signal="body_entered" from="Sections/Section2/BoomTrigger" to="Sections/Section2/BoomTrigger" method="_on_body_entered"]
-[connection signal="body_entered" from="Sections/Section3/Item" to="Sections/Section3/Item" method="_on_body_entered"]
 [connection signal="body_entered" from="Sections/Section3/SwimTrigger" to="Sections/Section3/SwimTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="Sections/Section3/Item" to="Sections/Section3/Item" method="_on_body_entered"]
 [connection signal="body_entered" from="Island/EnterLighthouseArea" to="Island/EnterLighthouseArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Island/EnterLighthouseArea" to="Island/EnterLighthouseArea" method="_on_body_exited"]
 [connection signal="body_entered" from="Rooms/LighthouseRoom/ExitLighthouseArea" to="Rooms/LighthouseRoom/ExitLighthouseArea" method="_on_body_entered"]
