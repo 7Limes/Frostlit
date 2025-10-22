@@ -6,6 +6,11 @@ extends Node3D
 
 const LIGHT_ROTATE_SPEED = 2
 
+func _ready() -> void:
+	if Globals.title_lighthouse_off:
+		light.visible = false
+
+
 func _on_play_button_pressed() -> void:
 	var fade_tweener = create_tween()
 	fade_tweener.tween_property(fade_rect, 'color:a', 1.0, 1.0)

@@ -3,8 +3,10 @@ extends ColorRect
 var paused = false
 
 @onready var debug_panel = %DebugPanel
-@onready var environment: WorldEnvironment = %Environment
+@onready var environment: FogEnvironment = %Environment
 @onready var player: Player = %Player
+
+var saved_fog_density = 0.0
 
 func update_pause():
 	get_tree().paused = paused
@@ -32,10 +34,11 @@ func _on_debug_button_pressed() -> void:
 
 
 func _on_toggle_fog_pressed() -> void:
-	if environment.environment.fog_density != 0:
-		environment.environment.fog_density = 0
+	if environment.environment.fog_density != 0.0:
+		saved_fog_density = environment.environment.fog_density
+		environment.environment.fog_density = 0.0
 	else:
-		environment.environment.fog_density = 0.1
+		environment.environment.fog_density = saved_fog_density
 
 
 func _on_toggle_speed_pressed() -> void:

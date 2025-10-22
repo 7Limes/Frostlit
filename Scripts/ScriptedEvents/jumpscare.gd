@@ -16,6 +16,8 @@ func _on_body_entered(body: Node3D) -> void:
 		event_triggered = true
 		creature.visible = true
 		body.jumpscare_sound.play()
+		
+		Globals.title_lighthouse_off = true
 		var tweener = create_tween()
 		tweener.tween_property(creature, 'position', end_pos.position, 0.5)
 		tweener.tween_callback(func():

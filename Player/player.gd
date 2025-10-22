@@ -13,7 +13,7 @@ extends CharacterBody3D
 @onready var compass = $Camera/Compass
 @onready var actionbar = %Actionbar
 @onready var snow_particles = $SnowParticles
-@onready var environment: WorldEnvironment = $"../Environment"
+@onready var environment: FogEnvironment = $"../Environment"
 @onready var fade_rect = %FadeRect
 @onready var sections = %Sections
 @onready var rooms = %Rooms
@@ -183,6 +183,7 @@ func toggle_indoors(indoors: bool):
 	snow_particles.visible = not indoors
 	sections.visible = not indoors
 	rooms.visible = indoors
+	environment.toggle_fog(indoors)
 	
 	# Handle wind audio
 	var lowpass_effect = AudioServer.get_bus_effect(ambience_bus_index, 0)
@@ -195,11 +196,9 @@ func toggle_indoors(indoors: bool):
 	if indoors:
 		tween.tween_method(func(value): lowpass_effect.cutoff_hz = value, 20000.0, 2000.0, 2.0)
 		tween.tween_property(wind_sound, "volume_db", -10, 2.0)
-		environment.environment.fog_density = 0.01
 	else:
 		tween.tween_method(func(value): lowpass_effect.cutoff_hz = value, 2000.0, 20000.0, 2.0)
 		tween.tween_property(wind_sound	, "volume_db", 0.0, 2.0)
-		environment.environment.fog_density = 0.1
 
 
 func _process(delta: float) -> void:
